@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0"
+    />
+    <title>Premier Appliances | Appliance Rentals in Ottawa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="container" data-brand="premierappliances">
+      <div
+        id="contact-trigger"
+        class="premierappliances__icon premierappliances__open"
+        data-aos="fade-up"
+        data-aos-delay="1000"
+      >
+        <img
+          src="./assets/svg/chatIcon.svg"
+          height="24"
+          width="24"
+          alt="Contact"
+        />
+      </div>
+
+      <section
+        class="pa-grid premierappliances__hero"
+        id="hero"
+        style="
+          background-image: url('./assets/img/a433d3e5624f26d8f402051b14df2fc2.png');
+        "
+      >
+        <div
+          class="premierappliances__hero--copy"
+          data-aos="fade-up"
+          data-aos-delay="250"
+        >
+          <h1>Welcome to the new era<br />of appliances</h1>
+        </div>
+        <div
+          class="premierappliances__contentBlock premierappliances__hero--logo"
+          data-aos="fade-in"
+        >
+          <img
+            src="./assets/img/cb2b5bb75816d7f619e6a762e749e596.svg"
+            height="216"
+            width="407"
+            alt="Logo"
+          />
+        </div>
+      </section>
+
+      <nav class="premierappliances__nav" id="main-nav">
+        <div class="premierappliances__nav--logo" id="mobile-nav-toggle">
+          <img
+            src="./assets/img/287b976e01c2fdbae7ee7e6e150d29fc.svg"
+            height="200"
+            width="200"
+            alt="Premier Appliances"
+          />
+          <img
+            class="nav-icon-open"
+            src="./assets/svg/menuOpenLight.svg"
+            height="25"
+            width="25"
+            alt="Open"
+          />
+          <img
+            class="nav-icon-close"
+            src="./assets/svg/menuCloseLight.svg"
+            height="25"
+            width="25"
+            alt="Close"
+            style="display: none"
+          />
+        </div>
+
+        <div class="premierappliances__nav--content" id="nav-content">
+          <div
+            class="premierappliances__nav--item premierappliances__nav--logo premierappliances__navSticky--logo sticky-logo"
+          >
+            <img
+              src="./assets/img/cb2b5bb75816d7f619e6a762e749e596.svg"
+              height="200"
+              width="200"
+              alt="Premier Appliances"
+            />
+          </div>
+          <a
+            href="#about"
+            class="text-bold text-upper premierappliances__nav--item"
+            >About</a
+          >
+          <a
+            href="#packages"
+            class="text-bold text-upper premierappliances__nav--item"
+            >Packages</a
+          >
+          <a
+            href="#howitworks"
+            class="text-bold text-upper premierappliances__nav--item"
+            >How It Works</a
+          >
+          <a
+            href="#vendors"
+            class="text-bold text-upper premierappliances__nav--item"
+            >Brands</a
+          >
+          <a
+            href="#whiteglove"
+            class="text-bold text-upper premierappliances__nav--item"
+            >White Glove Service</a
+          >
+          <a
+            href="#contact"
+            class="text-bold text-upper premierappliances__nav--item"
+            >Contact</a
+          >
+        </div>
+      </nav>
+
+      <section
+        class="pa-grid premierappliances__about"
+        id="about"
+        style="
+          background-image: url('./assets/img/972679e99a500a1f8d4bddc5a841016a.png');
+        "
+      >
+        <div class="premierappliances__contentBlock">
+          <h2 class="text-gold" data-aos="fade-left">
+            Tailor your home<br />with customized appliances
+          </h2>
+          <div
+            class="premierappliances__divider"
+            data-direction="horizontial"
+          ></div>
+          <p data-aos="fade-left">
+            Premier Appliances brings you the freedom to choose your appliances.
+            Whether you love baking, hosting dinner parties, or crafting gourmet
+            meals, our flexible appliance packages allow you to create your
+            dream kitchen – giving you the flexibility to upgrade, customize, or
+            change your setup as your needs evolve, all with white glove
+            service.
+          </p>
+          <p class="text-bold" data-aos="fade-left">
+            Say goodbye to standard options<br />and hello to a personalized
+            living experience.
+          </p>
+        </div>
+      </section>
+
+      <section class="premierappliances__packages" id="packages">
+        <div class="pa-grid">
+          <div class="premierappliances__packages--content">
+            <h2 class="text-gold" data-aos="fade-right">Packages</h2>
+          </div>
+
+          <div class="premierappliances__packages--btns">
+            <div
+              class="premierappliances__packages--btnsWrapper"
+              id="btn-wrapper-Silver"
+            >
+              <h3>Silver</h3>
+            </div>
+            <div
+              class="premierappliances__packages--btnsWrapper"
+              id="btn-wrapper-Gold"
+            >
+              <h3>Gold</h3>
+            </div>
+            <div
+              class="premierappliances__packages--btnsWrapper"
+              id="btn-wrapper-Platinum"
+            >
+              <h3>Platinum</h3>
+            </div>
+          </div>
+        </div>
+
+        <div id="packages-swiper-container"></div>
+      </section>
+
+      <section
+        class="pa-grid premierappliances__howitworks"
+        id="howitworks"
+        style="
+          background-image: url('./assets/img/6c386fbf1231997f11704559dfdb2e53.jpg');
+        "
+      >
+        <div class="premierappliances__contentBlock">
+          <h2 class="text-gold" data-aos="fade-right">How it works</h2>
+          <div
+            class="premierappliances__divider"
+            data-direction="horizontial"
+          ></div>
+          <p class="text-bold" data-aos="fade-right">
+            Simple, flexible and worry-free!
+          </p>
+          <p data-aos="fade-right">
+            Exclusive Appliance Program for Lépine Clients
+          </p>
+          <p data-aos="fade-right">
+            Enjoy a seamless, stress-free experience with our tailored appliance
+            solutions. Choose from pre-designed packages or customize your
+            selection to suit your lifestyle. Whether you're looking to purchase
+            or lease appliances, select a term that aligns with your lease, and
+            we'll ensure installation is complete before your move-in date.
+          </p>
+          <p data-aos="fade-right">
+            We take care of maintenance, repairs, and replacements, so you can
+            focus on what matters – living your best life. Discover effortless
+            living today!
+          </p>
+        </div>
+      </section>
+
+      <section class="premierappliances__vendors" id="vendors">
+        <div class="pa-grid">
+          <div class="premierappliances__vendors--content">
+            <h2 class="text-gold" data-aos="fade-left">Brands We Carry</h2>
+          </div>
+        </div>
+
+        <div class="premierappliances__swiper">
+          <div class="swiper vendors-swiper">
+            <div class="swiper-wrapper" id="vendors-wrapper"></div>
+            <div class="vendorsSwiper__pagination swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="pa-grid premierappliances__flexibility"
+        id="flexibility"
+        style="
+          background-image: url('./assets/img/672920280fea1e8725e3fcaa17a23baa.png');
+        "
+      >
+        <div class="premierappliances__contentBlock">
+          <h2 class="text-gold" data-aos="fade-up">
+            Flexibility<br />for every lifestyle
+          </h2>
+          <div
+            class="premierappliances__divider"
+            data-direction="horizontial"
+          ></div>
+          <p data-aos="fade-down">
+            If your preferences change, so can your appliances. Whether you want
+            the latest features or a new style, we've got you covered. Upgrade
+            anytime and enjoy the freedom of choice without hassle.
+          </p>
+        </div>
+      </section>
+
+      <section class="pa-grid premierappliances__whiteglove" id="whiteglove">
+        <div class="premierappliances__contentBlock">
+          <div class="premierappliances__contentWrapper" data-block="header">
+            <h2 class="text-gold" data-aos="fade">White Glove Service</h2>
+            <div
+              class="premierappliances__divider"
+              data-direction="horizontial"
+            ></div>
+            <p class="text-bold" data-aos="fade">
+              We will install and have your appliances ready for you on the day
+              you move in, this includes having ice makers or water hooked up to
+              fridges if you selected appliances with these features.
+            </p>
+          </div>
+
+          <div class="premierappliances__contentWrapper" data-aos="fade">
+            <h3 class="text-gold">All packages come with</h3>
+            <ul>
+              <li>
+                Full warranty for the duration of the rental. This includes 1
+                annual scheduled maintenance for component cleaning and
+                inspection
+              </li>
+              <li>
+                Filters will be changed; however, the cost of the filter is the
+                client's responsibility, but the service is of no charge
+              </li>
+              <li>
+                If an appliance fails during the rental period, we will visit
+                and perform a service call. If it is not something that can be
+                repaired on site, an equivalent model and age appliance will be
+                supplied as a replacement. If repair can be performed on site,
+                it will be completed in a timely manner as parts are available
+              </li>
+              <li>
+                Our technicians will wear booties while in your home and leave
+                your residence in a condition as if they were never there after
+                the repairs are completed
+              </li>
+              <li>
+                Please note, if a service call is scheduled for a repair but the
+                unit is found to be in working order or the call was for a
+                customer caused problem, a $50 service charge will be billed
+              </li>
+            </ul>
+          </div>
+
+          <div class="premierappliances__contentWrapper" data-aos="fade">
+            <h3 class="text-gold">After Hours Call Out</h3>
+            <p>
+              If a break down occurs, we will schedule a priority service visit
+              in a timely manner and get your appliance back online.
+            </p>
+          </div>
+
+          <div
+            class="premierappliances__contentWrapper"
+            data-aos="fade"
+            data-block="servicehours"
+          >
+            <h3 class="text-gold">Service Hours</h3>
+            <p class="text-bold">Monday – Friday</p>
+            <p class="text-bold">8am – 4pm</p>
+            <p data-aos="fade">
+              We will make all efforts possible to get you back up and running
+              as quickly as we can, please note during holidays, service calls
+              may be delayed. Our team will reach out and discuss the issue and
+              inform you of when you can expect them to arrive. They may help
+              you through some troubleshooting options by phone to help
+              determine the cause of the problem or to assist in the repair.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="pa-grid premierappliances__contact"
+        style="
+          background-image: url('./assets/img/a433d3e5624f26d8f402051b14df2fc2.png');
+        "
+      >
+        <div class="premierappliances__contentBlock" id="contact">
+          <form class="premierappliances__contact--form" id="contact-form-main">
+            <h2 class="text-gold" data-aos="fade-down">Contact</h2>
+            <div
+              class="premierappliances__divider"
+              data-direction="horizontial"
+            ></div>
+
+            <div class="premierappliances__contact--info">
+              <a
+                href="mailto:dave@premierappliances.ca"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                <h4>info@premierappliances.ca</h4>
+              </a>
+              <a href="tel:6132268955" data-aos="fade-up" data-aos-delay="150"
+                ><h4>613-226-8955</h4></a
+              >
+            </div>
+
+            <p>Name (required)</p>
+            <input
+              required
+              name="name"
+              type="text"
+              class="premierappliances__contact--input"
+            />
+            <p>Email (required)</p>
+            <input
+              required
+              name="email"
+              type="email"
+              class="premierappliances__contact--input"
+            />
+            <p>Phone Number</p>
+            <input
+              name="phoneNumber"
+              type="text"
+              class="premierappliances__contact--input"
+            />
+            <p>Rental Start Date</p>
+            <input
+              name="rentalStartDate"
+              type="date"
+              class="premierappliances__contact--input"
+            />
+            <p>Message</p>
+            <textarea
+              name="message"
+              class="premierappliances__contact--input"
+            ></textarea>
+
+            <p class="form-response"></p>
+            <button type="submit" class="premierappliances__contact--submit">
+              Submit
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section class="premierappliances__contactpopup" id="contact-popup">
+        <div class="premierappliances__contactpopup--close" id="popup-close">
+          <div class="premierappliances__icon premierappliances__close">
+            <img
+              src="./assets/svg/menuCloseLight.svg"
+              height="24"
+              width="24"
+              alt="Close"
+            />
+          </div>
+        </div>
+
+        <div class="premierappliances__contentBlock">
+          <form
+            class="premierappliances__contact--form"
+            id="contact-form-popup"
+          >
+            <h2 class="text-gold">Contact</h2>
+            <div
+              class="premierappliances__divider"
+              data-direction="horizontial"
+            ></div>
+
+            <p>Name (required)</p>
+            <input
+              required
+              name="name"
+              type="text"
+              class="premierappliances__contact--input"
+            />
+            <p>Email (required)</p>
+            <input
+              required
+              name="email"
+              type="email"
+              class="premierappliances__contact--input"
+            />
+            <p>Phone Number</p>
+            <input
+              name="phoneNumber"
+              type="text"
+              class="premierappliances__contact--input"
+            />
+            <p>Rental Start Date</p>
+            <input
+              name="rentalStartDate"
+              type="date"
+              class="premierappliances__contact--input"
+            />
+            <p>Message</p>
+            <textarea
+              name="message"
+              class="premierappliances__contact--input"
+            ></textarea>
+
+            <p class="form-response"></p>
+            <button type="submit" class="premierappliances__contact--submit">
+              Submit
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <footer class="pa-grid premierappliances__footer" id="footer">
+        <div class="premierappliances__footer--content">
+          <a href="#">
+            <img
+              src="./assets/img/cb2b5bb75816d7f619e6a762e749e596.svg"
+              height="50"
+              width="50"
+              alt="Logo"
+            />
+          </a>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="./assets/js/script.js"></script>
+  </body>
+</html>
