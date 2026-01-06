@@ -201,7 +201,7 @@ section.pa-grid {
   background: var(--pa-gold);
   width: 25%;
   height: 0.25rem;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .premierappliances__swiper {
