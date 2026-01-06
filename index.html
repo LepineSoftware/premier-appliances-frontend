@@ -24,13 +24,60 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "pa-gold": "#cda656",
+              "pa-goldt": "rgba(205, 166, 86, 0.8)",
+              "pa-dark": "#404040",
+              "pa-darkt": "rgba(64, 64, 64, 0.8)",
+            },
+            fontFamily: {
+              sans: ["Barlow", "sans-serif"],
+            },
+            // Custom Grid Definition matching original styles.css
+            gridTemplateColumns: {
+              "pa-desktop": "3rem repeat(10, minmax(0, 1fr)) 3rem",
+              "pa-mobile": "1rem repeat(10, minmax(0, 1fr)) 1rem",
+            },
+            gridTemplateRows: {
+              "pa-desktop": "3rem repeat(10, minmax(0, 1fr)) 3rem",
+              "pa-mobile": "1rem repeat(10, minmax(0, 1fr)) 1rem",
+            },
+            keyframes: {
+              navSticky: {
+                "0%": { position: "fixed", top: "-4rem", left: "0" },
+                "80%": { position: "fixed", top: "0", left: "0" },
+              },
+              contactPopupActive: {
+                "0%": { position: "fixed", top: "200%", left: "0" },
+                "80%": { position: "fixed", top: "0", left: "0" },
+              },
+              swiperFade: {
+                "0%": { opacity: "0" },
+                "80%": { opacity: "1" },
+              },
+            },
+            animation: {
+              navSticky: "navSticky 0.5s ease-in-out",
+              contactPopup: "contactPopupActive 0.5s ease-in-out",
+              swiperFade: "swiperFade 0.5s ease-in-out",
+            },
+          },
+        },
+      };
+    </script>
+
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
-    <div class="container" data-brand="premierappliances">
+  <body class="w-full overflow-x-hidden m-0 p-0 font-sans">
+    <div class="container mx-auto" data-brand="premierappliances">
       <div
         id="contact-trigger"
-        class="premierappliances__icon premierappliances__open"
+        class="premierappliances__icon flex justify-center items-center h-12 w-12 rounded-full text-2xl cursor-pointer select-none bg-pa-gold fixed z-50 bottom-2 right-4 active:translate-y-px transition-all duration-200"
         data-aos="fade-up"
         data-aos-delay="1000"
       >
@@ -43,25 +90,30 @@
       </div>
 
       <section
-        class="pa-grid premierappliances__hero"
+        class="w-full max-w-[2560px] grid grid-cols-pa-mobile grid-rows-pa-mobile md:grid-cols-pa-desktop md:grid-rows-pa-desktop min-h-[80vh] md:min-h-[calc(100vh-4rem)] bg-cover bg-center bg-no-repeat bg-blend-darken border-b-0"
         id="hero"
         style="
           background-image: url('./assets/img/a433d3e5624f26d8f402051b14df2fc2.png');
         "
       >
         <div
-          class="premierappliances__hero--copy"
+          class="premierappliances__hero--copy flex justify-center items-center text-center col-start-1 col-end-13 row-start-8 row-end-13 md:col-start-1 md:col-end-13 md:row-start-9 md:row-end-13 bg-pa-darkt backdrop-blur-[5px] md:bg-transparent md:backdrop-blur-0"
           data-aos="fade-up"
           data-aos-delay="250"
         >
-          <h1>Welcome to the new era<br />of appliances</h1>
+          <h1
+            class="text-white uppercase font-normal text-[2rem] md:text-5xl leading-tight drop-shadow-md"
+          >
+            Welcome to the new era<br />of appliances
+          </h1>
         </div>
         <div
-          class="premierappliances__contentBlock premierappliances__hero--logo"
+          class="premierappliances__hero--logo bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 col-start-1 col-end-13 row-start-2 row-end-8 md:col-start-7 md:col-end-13 md:row-start-4 md:row-end-9 text-white"
           data-aos="fade-in"
         >
           <img
             src="./assets/img/cb2b5bb75816d7f619e6a762e749e596.svg"
+            class="h-auto w-auto max-h-[200px] object-contain object-center"
             height="216"
             width="407"
             alt="Logo"
@@ -69,23 +121,30 @@
         </div>
       </section>
 
-      <nav class="premierappliances__nav" id="main-nav">
-        <div class="premierappliances__nav--logo" id="mobile-nav-toggle">
+      <nav
+        class="premierappliances__nav bg-pa-dark text-white flex flex-col md:flex-row flex-wrap justify-center items-center h-auto md:h-16 shadow-lg transition-all duration-200 fixed top-0 left-0 w-full z-10 md:relative md:z-auto border-b-4 border-pa-gold box-border"
+        id="main-nav"
+      >
+        <div
+          class="premierappliances__nav--logo w-full bg-pa-gold flex justify-between items-center h-16 px-4 md:hidden cursor-pointer"
+          id="mobile-nav-toggle"
+        >
           <img
             src="./assets/img/287b976e01c2fdbae7ee7e6e150d29fc.svg"
+            class="h-full w-auto object-center object-contain"
             height="200"
             width="200"
             alt="Premier Appliances"
           />
           <img
-            class="nav-icon-open"
+            class="nav-icon-open w-6 h-6"
             src="./assets/svg/menuOpenLight.svg"
             height="25"
             width="25"
             alt="Open"
           />
           <img
-            class="nav-icon-close"
+            class="nav-icon-close w-6 h-6 hidden"
             src="./assets/svg/menuCloseLight.svg"
             height="25"
             width="25"
@@ -94,12 +153,16 @@
           />
         </div>
 
-        <div class="premierappliances__nav--content" id="nav-content">
+        <div
+          class="premierappliances__nav--content hidden md:flex flex-col md:flex-row flex-wrap justify-center items-center w-full h-full"
+          id="nav-content"
+        >
           <div
-            class="premierappliances__nav--item premierappliances__nav--logo premierappliances__navSticky--logo sticky-logo"
+            class="premierappliances__nav--item premierappliances__navSticky--logo sticky-logo hidden md:flex flex-1 h-full justify-center items-center text-center bg-pa-dark text-white transition-all duration-200 border-b-4 border-transparent px-4 py-2 cursor-pointer"
           >
             <img
               src="./assets/img/cb2b5bb75816d7f619e6a762e749e596.svg"
+              class="h-full w-auto object-contain"
               height="200"
               width="200"
               alt="Premier Appliances"
@@ -107,50 +170,55 @@
           </div>
           <a
             href="#about"
-            class="text-bold text-upper premierappliances__nav--item"
+            class="premierappliances__nav--item flex-1 h-full w-full md:w-auto flex justify-center items-center text-center bg-pa-dark text-white transition-all duration-200 border-b-4 border-transparent hover:border-pa-gold hover:bg-white/5 p-4 md:p-0 font-bold uppercase no-underline"
             >About</a
           >
           <a
             href="#packages"
-            class="text-bold text-upper premierappliances__nav--item"
+            class="premierappliances__nav--item flex-1 h-full w-full md:w-auto flex justify-center items-center text-center bg-pa-dark text-white transition-all duration-200 border-b-4 border-transparent hover:border-pa-gold hover:bg-white/5 p-4 md:p-0 font-bold uppercase no-underline"
             >Packages</a
           >
           <a
             href="#howitworks"
-            class="text-bold text-upper premierappliances__nav--item"
+            class="premierappliances__nav--item flex-1 h-full w-full md:w-auto flex justify-center items-center text-center bg-pa-dark text-white transition-all duration-200 border-b-4 border-transparent hover:border-pa-gold hover:bg-white/5 p-4 md:p-0 font-bold uppercase no-underline"
             >How It Works</a
           >
           <a
             href="#vendors"
-            class="text-bold text-upper premierappliances__nav--item"
+            class="premierappliances__nav--item flex-1 h-full w-full md:w-auto flex justify-center items-center text-center bg-pa-dark text-white transition-all duration-200 border-b-4 border-transparent hover:border-pa-gold hover:bg-white/5 p-4 md:p-0 font-bold uppercase no-underline"
             >Brands</a
           >
           <a
             href="#whiteglove"
-            class="text-bold text-upper premierappliances__nav--item"
+            class="premierappliances__nav--item flex-1 h-full w-full md:w-auto flex justify-center items-center text-center bg-pa-dark text-white transition-all duration-200 border-b-4 border-transparent hover:border-pa-gold hover:bg-white/5 p-4 md:p-0 font-bold uppercase no-underline"
             >White Glove Service</a
           >
           <a
             href="#contact"
-            class="text-bold text-upper premierappliances__nav--item"
+            class="premierappliances__nav--item flex-1 h-full w-full md:w-auto flex justify-center items-center text-center bg-pa-dark text-white transition-all duration-200 border-b-4 border-transparent hover:border-pa-gold hover:bg-white/5 p-4 md:p-0 font-bold uppercase no-underline"
             >Contact</a
           >
         </div>
       </nav>
 
       <section
-        class="pa-grid premierappliances__about"
+        class="premierappliances__about w-full max-w-[2560px] grid grid-cols-pa-mobile grid-rows-pa-mobile md:grid-cols-pa-desktop md:grid-rows-pa-desktop min-h-screen bg-cover bg-center bg-no-repeat text-white border-b-4 border-pa-gold box-border"
         id="about"
         style="
           background-image: url('./assets/img/972679e99a500a1f8d4bddc5a841016a.png');
         "
       >
-        <div class="premierappliances__contentBlock">
-          <h2 class="text-gold" data-aos="fade-left">
+        <div
+          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 col-start-3 col-end-11 row-start-3 row-end-11 md:col-start-7 lg:col-start-8 md:col-end-12 md:row-start-1 md:row-end-10"
+        >
+          <h2
+            class="text-pa-gold uppercase text-2xl md:text-3xl font-normal"
+            data-aos="fade-left"
+          >
             Tailor your home<br />with customized appliances
           </h2>
           <div
-            class="premierappliances__divider"
+            class="premierappliances__divider bg-pa-gold w-1/4 h-1 mx-auto"
             data-direction="horizontial"
           ></div>
           <p data-aos="fade-left">
@@ -161,58 +229,82 @@
             change your setup as your needs evolve, all with white glove
             service.
           </p>
-          <p class="text-bold" data-aos="fade-left">
+          <p class="text-bold font-bold" data-aos="fade-left">
             Say goodbye to standard options<br />and hello to a personalized
             living experience.
           </p>
         </div>
       </section>
 
-      <section class="premierappliances__packages" id="packages">
-        <div class="pa-grid">
-          <div class="premierappliances__packages--content">
-            <h2 class="text-gold" data-aos="fade-right">Packages</h2>
+      <section
+        class="premierappliances__packages border-b-4 border-pa-gold box-border"
+        id="packages"
+      >
+        <div
+          class="pa-grid grid grid-cols-pa-mobile md:grid-cols-pa-desktop pt-8 pb-0 gap-y-4"
+        >
+          <div
+            class="premierappliances__packages--content col-start-2 col-end-12 row-start-1 row-end-2"
+          >
+            <h2
+              class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
+              data-aos="fade-right"
+            >
+              Packages
+            </h2>
           </div>
 
-          <div class="premierappliances__packages--btns">
+          <div
+            class="premierappliances__packages--btns flex flex-row flex-wrap justify-start items-start gap-2 md:gap-4 col-start-2 col-end-12 row-start-2 row-end-3"
+          >
             <div
-              class="premierappliances__packages--btnsWrapper"
+              class="premierappliances__packages--btnsWrapper flex flex-col justify-start items-center gap-2 flex-[1_1_350px]"
               id="btn-wrapper-Silver"
             >
-              <h3>Silver</h3>
+              <h3 class="uppercase text-xl font-normal">Silver</h3>
             </div>
             <div
-              class="premierappliances__packages--btnsWrapper"
+              class="premierappliances__packages--btnsWrapper flex flex-col justify-start items-center gap-2 flex-[1_1_350px]"
               id="btn-wrapper-Gold"
             >
-              <h3>Gold</h3>
+              <h3 class="uppercase text-xl font-normal">Gold</h3>
             </div>
             <div
-              class="premierappliances__packages--btnsWrapper"
+              class="premierappliances__packages--btnsWrapper flex flex-col justify-start items-center gap-2 flex-[1_1_350px]"
               id="btn-wrapper-Platinum"
             >
-              <h3>Platinum</h3>
+              <h3 class="uppercase text-xl font-normal">Platinum</h3>
             </div>
           </div>
         </div>
 
-        <div id="packages-swiper-container"></div>
+        <div
+          id="packages-swiper-container"
+          class="grid grid-cols-pa-mobile md:grid-cols-pa-desktop pb-8"
+        ></div>
       </section>
 
       <section
-        class="pa-grid premierappliances__howitworks"
+        class="premierappliances__howitworks w-full max-w-[2560px] grid grid-cols-pa-mobile grid-rows-pa-mobile md:grid-cols-pa-desktop md:grid-rows-pa-desktop min-h-screen bg-cover bg-center bg-no-repeat text-white border-b-4 border-pa-gold box-border"
         id="howitworks"
         style="
           background-image: url('./assets/img/6c386fbf1231997f11704559dfdb2e53.jpg');
         "
       >
-        <div class="premierappliances__contentBlock">
-          <h2 class="text-gold" data-aos="fade-right">How it works</h2>
+        <div
+          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 col-start-3 col-end-11 row-start-3 row-end-11 md:col-start-1 md:col-end-7 md:row-start-3 md:row-end-10"
+        >
+          <h2
+            class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
+            data-aos="fade-right"
+          >
+            How it works
+          </h2>
           <div
-            class="premierappliances__divider"
+            class="premierappliances__divider bg-pa-gold w-1/4 h-1 mx-auto"
             data-direction="horizontial"
           ></div>
-          <p class="text-bold" data-aos="fade-right">
+          <p class="text-bold font-bold" data-aos="fade-right">
             Simple, flexible and worry-free!
           </p>
           <p data-aos="fade-right">
@@ -233,17 +325,31 @@
         </div>
       </section>
 
-      <section class="premierappliances__vendors" id="vendors">
-        <div class="pa-grid">
-          <div class="premierappliances__vendors--content">
-            <h2 class="text-gold" data-aos="fade-left">Brands We Carry</h2>
+      <section
+        class="premierappliances__vendors border-b-4 border-pa-gold box-border"
+        id="vendors"
+      >
+        <div
+          class="pa-grid grid grid-cols-pa-mobile md:grid-cols-pa-desktop pt-8"
+        >
+          <div
+            class="premierappliances__vendors--content col-start-2 col-end-12 row-start-1 row-end-2"
+          >
+            <h2
+              class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
+              data-aos="fade-left"
+            >
+              Brands We Carry
+            </h2>
           </div>
         </div>
 
-        <div class="premierappliances__swiper">
+        <div class="premierappliances__swiper w-full py-8">
           <div class="swiper vendors-swiper">
             <div class="swiper-wrapper" id="vendors-wrapper"></div>
-            <div class="vendorsSwiper__pagination swiper-pagination"></div>
+            <div
+              class="vendorsSwiper__pagination swiper-pagination flex justify-center items-center pt-8"
+            ></div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
           </div>
@@ -251,18 +357,23 @@
       </section>
 
       <section
-        class="pa-grid premierappliances__flexibility"
+        class="premierappliances__flexibility w-full max-w-[2560px] grid grid-cols-pa-mobile grid-rows-pa-mobile md:grid-cols-pa-desktop md:grid-rows-pa-desktop min-h-screen bg-cover bg-center bg-no-repeat text-white border-b-4 border-pa-gold box-border"
         id="flexibility"
         style="
           background-image: url('./assets/img/672920280fea1e8725e3fcaa17a23baa.png');
         "
       >
-        <div class="premierappliances__contentBlock">
-          <h2 class="text-gold" data-aos="fade-up">
+        <div
+          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 col-start-3 col-end-11 row-start-4 row-end-10 md:col-start-4 md:col-end-10 md:row-start-1 md:row-end-8"
+        >
+          <h2
+            class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
+            data-aos="fade-up"
+          >
             Flexibility<br />for every lifestyle
           </h2>
           <div
-            class="premierappliances__divider"
+            class="premierappliances__divider bg-pa-gold w-1/4 h-1 mx-auto"
             data-direction="horizontial"
           ></div>
           <p data-aos="fade-down">
@@ -273,24 +384,44 @@
         </div>
       </section>
 
-      <section class="pa-grid premierappliances__whiteglove" id="whiteglove">
-        <div class="premierappliances__contentBlock">
-          <div class="premierappliances__contentWrapper" data-block="header">
-            <h2 class="text-gold" data-aos="fade">White Glove Service</h2>
+      <section
+        class="premierappliances__whiteglove grid grid-cols-pa-mobile md:grid-cols-pa-desktop text-center border-b-4 border-pa-gold py-12 box-border"
+        id="whiteglove"
+      >
+        <div
+          class="premierappliances__contentBlock flex flex-col items-center justify-center gap-8 md:gap-12 col-start-2 col-end-12 row-start-2 row-end-12 bg-transparent p-0"
+        >
+          <div
+            class="premierappliances__contentWrapper flex flex-col justify-center items-center gap-2 max-w-[1000px]"
+            data-block="header"
+          >
+            <h2
+              class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
+              data-aos="fade"
+            >
+              White Glove Service
+            </h2>
             <div
-              class="premierappliances__divider"
+              class="premierappliances__divider bg-pa-gold w-1/4 h-1 mx-auto"
               data-direction="horizontial"
             ></div>
-            <p class="text-bold" data-aos="fade">
+            <p class="text-bold font-bold" data-aos="fade">
               We will install and have your appliances ready for you on the day
               you move in, this includes having ice makers or water hooked up to
               fridges if you selected appliances with these features.
             </p>
           </div>
 
-          <div class="premierappliances__contentWrapper" data-aos="fade">
-            <h3 class="text-gold">All packages come with</h3>
-            <ul>
+          <div
+            class="premierappliances__contentWrapper flex flex-col justify-center items-center gap-2 max-w-[1000px]"
+            data-aos="fade"
+          >
+            <h3 class="text-gold text-pa-gold uppercase text-xl font-normal">
+              All packages come with
+            </h3>
+            <ul
+              class="flex flex-col justify-start items-start gap-4 text-left pl-4 list-inside"
+            >
               <li>
                 Full warranty for the duration of the rental. This includes 1
                 annual scheduled maintenance for component cleaning and
@@ -320,8 +451,13 @@
             </ul>
           </div>
 
-          <div class="premierappliances__contentWrapper" data-aos="fade">
-            <h3 class="text-gold">After Hours Call Out</h3>
+          <div
+            class="premierappliances__contentWrapper flex flex-col justify-center items-center gap-2 max-w-[1000px]"
+            data-aos="fade"
+          >
+            <h3 class="text-gold text-pa-gold uppercase text-xl font-normal">
+              After Hours Call Out
+            </h3>
             <p>
               If a break down occurs, we will schedule a priority service visit
               in a timely manner and get your appliance back online.
@@ -329,13 +465,15 @@
           </div>
 
           <div
-            class="premierappliances__contentWrapper"
+            class="premierappliances__contentWrapper flex flex-col justify-center items-center gap-2 max-w-[1000px]"
             data-aos="fade"
             data-block="servicehours"
           >
-            <h3 class="text-gold">Service Hours</h3>
-            <p class="text-bold">Monday – Friday</p>
-            <p class="text-bold">8am – 4pm</p>
+            <h3 class="text-gold text-pa-gold uppercase text-xl font-normal">
+              Service Hours
+            </h3>
+            <p class="text-bold font-bold">Monday – Friday</p>
+            <p class="text-bold font-bold">8am – 4pm</p>
             <p data-aos="fade">
               We will make all efforts possible to get you back up and running
               as quickly as we can, please note during holidays, service calls
@@ -349,75 +487,103 @@
       </section>
 
       <section
-        class="pa-grid premierappliances__contact"
+        class="premierappliances__contact w-full max-w-[2560px] grid grid-cols-pa-mobile grid-rows-pa-mobile md:grid-cols-pa-desktop md:grid-rows-pa-desktop min-h-screen bg-cover bg-center bg-no-repeat text-white border-b-4 border-pa-gold box-border"
         style="
           background-image: url('./assets/img/a433d3e5624f26d8f402051b14df2fc2.png');
         "
       >
-        <div class="premierappliances__contentBlock" id="contact">
-          <form class="premierappliances__contact--form" id="contact-form-main">
-            <h2 class="text-gold" data-aos="fade-down">Contact</h2>
+        <div
+          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 col-start-1 col-end-13 row-start-1 row-end-13 md:col-start-4 md:col-end-10 md:row-start-3 md:row-end-11"
+          id="contact"
+        >
+          <form
+            class="premierappliances__contact--form flex flex-col gap-2 w-full"
+            id="contact-form-main"
+          >
+            <h2
+              class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
+              data-aos="fade-down"
+            >
+              Contact
+            </h2>
             <div
-              class="premierappliances__divider"
+              class="premierappliances__divider bg-pa-gold w-1/4 h-1 mx-auto"
               data-direction="horizontial"
             ></div>
 
-            <div class="premierappliances__contact--info">
+            <div class="premierappliances__contact--info flex flex-col gap-1">
               <a
                 href="mailto:dave@premierappliances.ca"
                 data-aos="fade-up"
                 data-aos-delay="100"
+                class="text-inherit no-underline"
               >
-                <h4>info@premierappliances.ca</h4>
+                <h4 class="text-lg font-normal">info@premierappliances.ca</h4>
               </a>
-              <a href="tel:6132268955" data-aos="fade-up" data-aos-delay="150"
-                ><h4>613-226-8955</h4></a
+              <a
+                href="tel:6132268955"
+                data-aos="fade-up"
+                data-aos-delay="150"
+                class="text-inherit no-underline"
               >
+                <h4 class="text-lg font-normal">613-226-8955</h4>
+              </a>
             </div>
 
-            <p>Name (required)</p>
+            <p class="text-left mb-0">Name (required)</p>
             <input
               required
               name="name"
               type="text"
-              class="premierappliances__contact--input"
+              class="premierappliances__contact--input p-2 h-12 text-pa-dark w-full box-border"
             />
-            <p>Email (required)</p>
+            <p class="text-left mb-0">Email (required)</p>
             <input
               required
               name="email"
               type="email"
-              class="premierappliances__contact--input"
+              class="premierappliances__contact--input p-2 h-12 text-pa-dark w-full box-border"
             />
-            <p>Phone Number</p>
+            <p class="text-left mb-0">Phone Number</p>
             <input
               name="phoneNumber"
               type="text"
-              class="premierappliances__contact--input"
+              class="premierappliances__contact--input p-2 h-12 text-pa-dark w-full box-border"
             />
-            <p>Rental Start Date</p>
+            <p class="text-left mb-0">Rental Start Date</p>
             <input
               name="rentalStartDate"
               type="date"
-              class="premierappliances__contact--input"
+              class="premierappliances__contact--input p-2 h-12 text-pa-dark w-full box-border"
             />
-            <p>Message</p>
+            <p class="text-left mb-0">Message</p>
             <textarea
               name="message"
-              class="premierappliances__contact--input"
+              class="premierappliances__contact--input p-2 text-pa-dark w-full box-border resize-none h-24"
             ></textarea>
 
             <p class="form-response"></p>
-            <button type="submit" class="premierappliances__contact--submit">
+            <button
+              type="submit"
+              class="premierappliances__contact--submit bg-pa-gold p-4 font-medium uppercase border-none text-white hover:brightness-95 hover:cursor-pointer transition-all duration-200"
+            >
               Submit
             </button>
           </form>
         </div>
       </section>
 
-      <section class="premierappliances__contactpopup" id="contact-popup">
-        <div class="premierappliances__contactpopup--close" id="popup-close">
-          <div class="premierappliances__icon premierappliances__close">
+      <section
+        class="premierappliances__contactpopup hidden justify-center items-center bg-pa-goldt fixed top-0 left-0 h-screen w-screen z-[99] overflow-y-scroll"
+        id="contact-popup"
+      >
+        <div
+          class="premierappliances__contactpopup--close fixed top-4 right-4 z-[100]"
+          id="popup-close"
+        >
+          <div
+            class="premierappliances__icon premierappliances__close flex justify-center items-center h-12 w-12 rounded-full text-2xl leading-none cursor-pointer bg-pa-dark text-white active:translate-y-px transition-all duration-200"
+          >
             <img
               src="./assets/svg/menuCloseLight.svg"
               height="24"
@@ -427,64 +593,79 @@
           </div>
         </div>
 
-        <div class="premierappliances__contentBlock">
+        <div
+          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 w-screen max-w-[665px] text-white"
+        >
           <form
-            class="premierappliances__contact--form"
+            class="premierappliances__contact--form flex flex-col gap-2 w-full"
             id="contact-form-popup"
           >
-            <h2 class="text-gold">Contact</h2>
+            <h2
+              class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
+            >
+              Contact
+            </h2>
             <div
-              class="premierappliances__divider"
+              class="premierappliances__divider bg-pa-gold w-1/4 h-1 mx-auto"
               data-direction="horizontial"
             ></div>
 
-            <p>Name (required)</p>
+            <p class="text-left mb-0">Name (required)</p>
             <input
               required
               name="name"
               type="text"
-              class="premierappliances__contact--input"
+              class="premierappliances__contact--input p-2 h-12 text-pa-dark w-full box-border"
             />
-            <p>Email (required)</p>
+            <p class="text-left mb-0">Email (required)</p>
             <input
               required
               name="email"
               type="email"
-              class="premierappliances__contact--input"
+              class="premierappliances__contact--input p-2 h-12 text-pa-dark w-full box-border"
             />
-            <p>Phone Number</p>
+            <p class="text-left mb-0">Phone Number</p>
             <input
               name="phoneNumber"
               type="text"
-              class="premierappliances__contact--input"
+              class="premierappliances__contact--input p-2 h-12 text-pa-dark w-full box-border"
             />
-            <p>Rental Start Date</p>
+            <p class="text-left mb-0">Rental Start Date</p>
             <input
               name="rentalStartDate"
               type="date"
-              class="premierappliances__contact--input"
+              class="premierappliances__contact--input p-2 h-12 text-pa-dark w-full box-border"
             />
-            <p>Message</p>
+            <p class="text-left mb-0">Message</p>
             <textarea
               name="message"
-              class="premierappliances__contact--input"
+              class="premierappliances__contact--input p-2 text-pa-dark w-full box-border resize-none h-24"
             ></textarea>
 
             <p class="form-response"></p>
-            <button type="submit" class="premierappliances__contact--submit">
+            <button
+              type="submit"
+              class="premierappliances__contact--submit bg-pa-gold p-4 font-medium uppercase border-none text-white hover:brightness-95 hover:cursor-pointer transition-all duration-200"
+            >
               Submit
             </button>
           </form>
         </div>
       </section>
 
-      <footer class="pa-grid premierappliances__footer" id="footer">
-        <div class="premierappliances__footer--content">
+      <footer
+        class="premierappliances__footer bg-pa-dark text-white h-20 p-4 flex justify-center items-center"
+        id="footer"
+      >
+        <div
+          class="premierappliances__footer--content flex justify-center items-center"
+        >
           <a href="#">
             <img
               src="./assets/img/cb2b5bb75816d7f619e6a762e749e596.svg"
               height="50"
               width="50"
+              class="h-[50px] w-auto object-contain"
               alt="Logo"
             />
           </a>

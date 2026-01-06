@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } else {
       nav.classList.remove("sticky");
+      // stickyLogo handling if needed when not sticky
+      if (stickyLogo) stickyLogo.style.display = ""; // Reset
     }
   };
   window.addEventListener("scroll", handleScroll);
@@ -62,8 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const slide = document.createElement("div");
       slide.className = "swiper-slide";
       slide.innerHTML = `
-            <div class="premierappliances__vendor">
-                <img src="${v.image}" alt="${v.name}" />
+            <div class="premierappliances__vendor h-[150px] w-[300px] flex justify-center items-center m-auto">
+                <img src="${v.image}" alt="${v.name}" class="h-3/4 w-3/4 object-contain object-center" />
             </div>
         `;
       vendorsWrapper.appendChild(slide);
@@ -101,9 +103,13 @@ document.addEventListener("DOMContentLoaded", () => {
       .querySelectorAll(".premierappliances__packages--btn")
       .forEach((btn) => {
         if (parseInt(btn.dataset.index) === activePackageIndex) {
-          btn.classList.add("active");
+          // Active State
+          btn.classList.add("bg-pa-gold");
+          btn.classList.remove("bg-pa-dark");
         } else {
-          btn.classList.remove("active");
+          // Inactive State
+          btn.classList.remove("bg-pa-gold");
+          btn.classList.add("bg-pa-dark");
         }
       });
 
@@ -112,9 +118,20 @@ document.addEventListener("DOMContentLoaded", () => {
       .querySelectorAll(".premierappliances__package--swiper-wrapper")
       .forEach((el, idx) => {
         if (idx === activePackageIndex) {
-          el.classList.add("active");
+          // Show with Animation
+          el.classList.remove("hidden");
+          el.classList.add("block", "animate-swiperFade");
+          // Also need to set col-start/end due to grid
+          el.classList.add("col-start-2", "col-end-12");
         } else {
-          el.classList.remove("active");
+          // Hide
+          el.classList.add("hidden");
+          el.classList.remove(
+            "block",
+            "animate-swiperFade",
+            "col-start-2",
+            "col-end-12"
+          );
         }
       });
   };
@@ -125,9 +142,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const btnWrapper = document.getElementById(`btn-wrapper-${p.tier}`);
       if (btnWrapper) {
         const btn = document.createElement("button");
-        btn.className = `premierappliances__packages--btn ${
-          index === activePackageIndex ? "active" : ""
-        }`;
+        // Base Tailwind Classes
+        const baseClasses =
+          "premierappliances__packages--btn w-full p-4 rounded text-white font-medium uppercase hover:brightness-95 transition-all border-none cursor-pointer";
+        // Initial State
+        const stateClasses =
+          index === activePackageIndex ? "bg-pa-gold" : "bg-pa-dark";
+
+        btn.className = `${baseClasses} ${stateClasses}`;
         btn.dataset.index = index;
         btn.innerText = p.name;
         btn.addEventListener("click", () => {
@@ -146,29 +168,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     packages.forEach((p, index) => {
       const swiperWrapper = document.createElement("div");
-      swiperWrapper.className = `premierappliances__swiper premierappliances__package--swiper-wrapper ${
-        index === activePackageIndex ? "active" : ""
-      }`;
+      // Base classes + initial visibility
+      const visibilityClass =
+        index === activePackageIndex
+          ? "block animate-swiperFade col-start-2 col-end-12"
+          : "hidden";
+      swiperWrapper.className = `premierappliances__swiper premierappliances__package--swiper-wrapper w-full py-8 ${visibilityClass}`;
       swiperWrapper.id = `package-swiper-${index}`;
 
       let slidesHtml = "";
       p.items.forEach((item) => {
         slidesHtml += `
             <div class="swiper-slide" style="width: 100%;">
-                <div class="premierappliances__package">
-                    <div class="premierappliances__package--image">
+                <div class="premierappliances__package flex flex-col justify-center items-center gap-4 w-full max-w-[400px] h-[500px] m-auto">
+                    <div class="premierappliances__package--image flex justify-center items-center">
                         <img src="${
                           item.image
-                        }" style="max-height:300px; width:auto;" alt="${
+                        }" style="max-height:300px; width:auto;" class="object-contain object-center h-[300px] w-[300px]" alt="${
           item.modelNumber
         }" />
                     </div>
-                    <div class="premierappliances__package--description">
-                        <p class="text-bold">${item.modelNumber}</p>
+                    <div class="premierappliances__package--description flex flex-col justify-center items-center gap-2 px-8 text-center h-full">
+                        <p class="font-bold">${item.modelNumber}</p>
                         <p>${item.description}</p>
                         ${
                           item.pdf && item.pdf !== "#"
-                            ? `<a href="${item.pdf}" target="_blank" rel="noreferrer" class="premierappliances__package--btn">View Specs</a>`
+                            ? `<a href="${item.pdf}" target="_blank" rel="noreferrer" class="premierappliances__package--btn text-pa-gold border-2 border-pa-gold rounded p-2 mt-auto transition-all no-underline hover:bg-pa-gold hover:text-white hover:font-bold">View Specs</a>`
                             : ""
                         }
                     </div>
