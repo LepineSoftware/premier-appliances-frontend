@@ -23,6 +23,8 @@ body.noscroll {
 
 .premierappliances__contactpopup.active {
   @apply grid animate-contactPopup;
+  display: grid !important;
+  /* Force override of utility 'hidden' */
 }
 
 /* Swiper Customizations (Cannot be easily Tailwind-ed due to library injection) */

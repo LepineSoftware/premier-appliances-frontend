@@ -12,14 +12,24 @@ module.exports = {
       fontFamily: {
         sans: ["Barlow", "sans-serif"],
       },
-      // Preserving your specific grid layout structure
-      gridTemplateColumns: {
-        "pa-desktop": "3rem repeat(10, 1fr) 3rem",
-        "pa-mobile": "1rem repeat(10, 1fr) 1rem",
+      keyframes: {
+        navSticky: {
+          "0%": { position: "fixed", top: "-4rem", left: "0" },
+          "80%": { position: "fixed", top: "0", left: "0" },
+        },
+        contactPopupActive: {
+          "0%": { position: "fixed", top: "200%", left: "0" },
+          "80%": { position: "fixed", top: "0", left: "0" },
+        },
+        swiperFade: {
+          "0%": { opacity: "0" },
+          "80%": { opacity: "1" },
+        },
       },
-      gridTemplateRows: {
-        "pa-desktop": "3rem repeat(10, 1fr) 3rem",
-        "pa-mobile": "1rem repeat(10, 1fr) 1rem",
+      animation: {
+        navSticky: "navSticky 0.5s ease-in-out",
+        contactPopup: "contactPopupActive 0.5s ease-in-out",
+        swiperFade: "swiperFade 0.5s ease-in-out",
       },
     },
   },

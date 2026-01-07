@@ -6,6 +6,9 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0"
     />
+
+    <link rel="canonical" href="https://www.premierappliances.ca/" />
+
     <title>Premier Appliances | Appliance Rentals in Ottawa</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,15 +41,6 @@
             fontFamily: {
               sans: ["Barlow", "sans-serif"],
             },
-            // Custom Grid Definition matching original styles.css
-            gridTemplateColumns: {
-              "pa-desktop": "3rem repeat(10, minmax(0, 1fr)) 3rem",
-              "pa-mobile": "1rem repeat(10, minmax(0, 1fr)) 1rem",
-            },
-            gridTemplateRows: {
-              "pa-desktop": "3rem repeat(10, minmax(0, 1fr)) 3rem",
-              "pa-mobile": "1rem repeat(10, minmax(0, 1fr)) 1rem",
-            },
             keyframes: {
               navSticky: {
                 "0%": { position: "fixed", top: "-4rem", left: "0" },
@@ -74,10 +68,10 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body class="w-full overflow-x-hidden m-0 p-0 font-sans">
-    <div class="container mx-auto" data-brand="premierappliances">
+    <div class="container-fluid w-full" data-brand="premierappliances">
       <div
         id="contact-trigger"
-        class="premierappliances__icon flex justify-center items-center h-12 w-12 rounded-full text-2xl cursor-pointer select-none bg-pa-gold fixed z-50 bottom-2 right-4 active:translate-y-px transition-all duration-200"
+        class="premierappliances__icon flex justify-center items-center h-12 w-12 rounded-full text-2xl cursor-pointer select-none bg-pa-gold fixed z-[60] bottom-2 right-4 active:translate-y-px transition-all duration-200"
         data-aos="fade-up"
         data-aos-delay="1000"
       >
@@ -90,14 +84,27 @@
       </div>
 
       <section
-        class="w-full max-w-[2560px] grid grid-cols-pa-mobile grid-rows-pa-mobile md:grid-cols-pa-desktop md:grid-rows-pa-desktop min-h-[80vh] md:min-h-[calc(100vh-4rem)] bg-cover bg-center bg-no-repeat bg-blend-darken border-b-0"
+        class="w-full min-h-screen md:min-h-[calc(100vh-4rem)] bg-cover bg-center bg-no-repeat bg-blend-darken border-b-0 flex flex-col justify-center items-center md:grid md:grid-cols-12 md:content-center pt-24 pb-12 px-4 md:p-12 gap-0 md:gap-8 relative"
         id="hero"
         style="
           background-image: url('./assets/img/a433d3e5624f26d8f402051b14df2fc2.png');
         "
       >
         <div
-          class="premierappliances__hero--copy flex justify-center items-center text-center col-start-1 col-end-13 row-start-8 row-end-13 md:col-start-1 md:col-end-13 md:row-start-9 md:row-end-13 bg-pa-darkt backdrop-blur-[5px] md:bg-transparent md:backdrop-blur-0"
+          class="premierappliances__hero--logo bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 text-white w-full max-w-lg md:max-w-none md:col-start-7 md:col-span-6 md:self-center order-1 md:order-none"
+          data-aos="fade-in"
+        >
+          <img
+            src="./assets/img/cb2b5bb75816d7f619e6a762e749e596.svg"
+            class="h-auto w-auto max-h-[150px] md:max-h-[200px] object-contain object-center"
+            height="216"
+            width="407"
+            alt="Logo"
+          />
+        </div>
+
+        <div
+          class="premierappliances__hero--copy flex justify-center items-center text-center bg-pa-darkt backdrop-blur-[5px] md:bg-transparent md:backdrop-blur-0 w-full max-w-lg md:max-w-none md:col-span-12 md:self-end p-6 md:p-0 order-2 md:order-none"
           data-aos="fade-up"
           data-aos-delay="250"
         >
@@ -106,18 +113,6 @@
           >
             Welcome to the new era<br />of appliances
           </h1>
-        </div>
-        <div
-          class="premierappliances__hero--logo bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 col-start-1 col-end-13 row-start-2 row-end-8 md:col-start-7 md:col-end-13 md:row-start-4 md:row-end-9 text-white"
-          data-aos="fade-in"
-        >
-          <img
-            src="./assets/img/cb2b5bb75816d7f619e6a762e749e596.svg"
-            class="h-auto w-auto max-h-[200px] object-contain object-center"
-            height="216"
-            width="407"
-            alt="Logo"
-          />
         </div>
       </section>
 
@@ -202,14 +197,14 @@
       </nav>
 
       <section
-        class="premierappliances__about w-full max-w-[2560px] grid grid-cols-pa-mobile grid-rows-pa-mobile md:grid-cols-pa-desktop md:grid-rows-pa-desktop min-h-screen bg-cover bg-center bg-no-repeat text-white border-b-4 border-pa-gold box-border"
+        class="premierappliances__about w-full min-h-screen grid grid-cols-1 md:grid-cols-12 items-center bg-cover bg-center bg-no-repeat text-white border-b-4 border-pa-gold box-border p-4 md:p-12 gap-4"
         id="about"
         style="
           background-image: url('./assets/img/972679e99a500a1f8d4bddc5a841016a.png');
         "
       >
         <div
-          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 col-start-3 col-end-11 row-start-3 row-end-11 md:col-start-7 lg:col-start-8 md:col-end-12 md:row-start-1 md:row-end-10"
+          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 w-full md:col-start-8 md:col-span-5"
         >
           <h2
             class="text-pa-gold uppercase text-2xl md:text-3xl font-normal"
@@ -237,15 +232,13 @@
       </section>
 
       <section
-        class="premierappliances__packages border-b-4 border-pa-gold box-border"
+        class="premierappliances__packages w-full border-b-4 border-pa-gold box-border"
         id="packages"
       >
         <div
-          class="pa-grid grid grid-cols-pa-mobile md:grid-cols-pa-desktop pt-8 pb-0 gap-y-4"
+          class="w-full px-4 md:px-12 pt-8 pb-0 grid grid-cols-1 md:grid-cols-12 gap-4"
         >
-          <div
-            class="premierappliances__packages--content col-start-2 col-end-12 row-start-1 row-end-2"
-          >
+          <div class="premierappliances__packages--content col-span-full">
             <h2
               class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
               data-aos="fade-right"
@@ -255,7 +248,7 @@
           </div>
 
           <div
-            class="premierappliances__packages--btns flex flex-row flex-wrap justify-start items-start gap-2 md:gap-4 col-start-2 col-end-12 row-start-2 row-end-3"
+            class="premierappliances__packages--btns col-span-full flex flex-row flex-wrap justify-start items-start gap-2 md:gap-4"
           >
             <div
               class="premierappliances__packages--btnsWrapper flex flex-col justify-start items-center gap-2 flex-[1_1_350px]"
@@ -280,19 +273,19 @@
 
         <div
           id="packages-swiper-container"
-          class="grid grid-cols-pa-mobile md:grid-cols-pa-desktop pb-8"
+          class="w-full px-4 md:px-12 pb-8 grid grid-cols-1 md:grid-cols-12"
         ></div>
       </section>
 
       <section
-        class="premierappliances__howitworks w-full max-w-[2560px] grid grid-cols-pa-mobile grid-rows-pa-mobile md:grid-cols-pa-desktop md:grid-rows-pa-desktop min-h-screen bg-cover bg-center bg-no-repeat text-white border-b-4 border-pa-gold box-border"
+        class="premierappliances__howitworks w-full min-h-screen grid grid-cols-1 md:grid-cols-12 items-center bg-cover bg-center bg-no-repeat text-white border-b-4 border-pa-gold box-border p-4 md:p-12 gap-4"
         id="howitworks"
         style="
           background-image: url('./assets/img/6c386fbf1231997f11704559dfdb2e53.jpg');
         "
       >
         <div
-          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 col-start-3 col-end-11 row-start-3 row-end-11 md:col-start-1 md:col-end-7 md:row-start-3 md:row-end-10"
+          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 w-full md:col-start-1 md:col-span-6"
         >
           <h2
             class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
@@ -326,15 +319,13 @@
       </section>
 
       <section
-        class="premierappliances__vendors border-b-4 border-pa-gold box-border"
+        class="premierappliances__vendors w-full border-b-4 border-pa-gold box-border"
         id="vendors"
       >
         <div
-          class="pa-grid grid grid-cols-pa-mobile md:grid-cols-pa-desktop pt-8"
+          class="w-full px-4 md:px-12 pt-8 grid grid-cols-1 md:grid-cols-12 gap-4"
         >
-          <div
-            class="premierappliances__vendors--content col-start-2 col-end-12 row-start-1 row-end-2"
-          >
+          <div class="premierappliances__vendors--content col-span-full">
             <h2
               class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
               data-aos="fade-left"
@@ -357,14 +348,14 @@
       </section>
 
       <section
-        class="premierappliances__flexibility w-full max-w-[2560px] grid grid-cols-pa-mobile grid-rows-pa-mobile md:grid-cols-pa-desktop md:grid-rows-pa-desktop min-h-screen bg-cover bg-center bg-no-repeat text-white border-b-4 border-pa-gold box-border"
+        class="premierappliances__flexibility w-full min-h-screen grid grid-cols-1 md:grid-cols-12 items-center bg-cover bg-center bg-no-repeat text-white border-b-4 border-pa-gold box-border p-4 md:p-12 gap-4"
         id="flexibility"
         style="
           background-image: url('./assets/img/672920280fea1e8725e3fcaa17a23baa.png');
         "
       >
         <div
-          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 col-start-3 col-end-11 row-start-4 row-end-10 md:col-start-4 md:col-end-10 md:row-start-1 md:row-end-8"
+          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 w-full md:col-start-4 md:col-span-6"
         >
           <h2
             class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
@@ -385,14 +376,14 @@
       </section>
 
       <section
-        class="premierappliances__whiteglove grid grid-cols-pa-mobile md:grid-cols-pa-desktop text-center border-b-4 border-pa-gold py-12 box-border"
+        class="premierappliances__whiteglove w-full text-center border-b-4 border-pa-gold py-12 px-4 md:px-12 box-border flex flex-col items-center justify-center"
         id="whiteglove"
       >
         <div
-          class="premierappliances__contentBlock flex flex-col items-center justify-center gap-8 md:gap-12 col-start-2 col-end-12 row-start-2 row-end-12 bg-transparent p-0"
+          class="premierappliances__contentBlock flex flex-col items-center justify-center gap-8 md:gap-12 bg-transparent p-0 w-full max-w-4xl"
         >
           <div
-            class="premierappliances__contentWrapper flex flex-col justify-center items-center gap-2 max-w-[1000px]"
+            class="premierappliances__contentWrapper flex flex-col justify-center items-center gap-2"
             data-block="header"
           >
             <h2
@@ -413,7 +404,7 @@
           </div>
 
           <div
-            class="premierappliances__contentWrapper flex flex-col justify-center items-center gap-2 max-w-[1000px]"
+            class="premierappliances__contentWrapper flex flex-col justify-center items-center gap-2"
             data-aos="fade"
           >
             <h3 class="text-gold text-pa-gold uppercase text-xl font-normal">
@@ -452,7 +443,7 @@
           </div>
 
           <div
-            class="premierappliances__contentWrapper flex flex-col justify-center items-center gap-2 max-w-[1000px]"
+            class="premierappliances__contentWrapper flex flex-col justify-center items-center gap-2"
             data-aos="fade"
           >
             <h3 class="text-gold text-pa-gold uppercase text-xl font-normal">
@@ -465,7 +456,7 @@
           </div>
 
           <div
-            class="premierappliances__contentWrapper flex flex-col justify-center items-center gap-2 max-w-[1000px]"
+            class="premierappliances__contentWrapper flex flex-col justify-center items-center gap-2"
             data-aos="fade"
             data-block="servicehours"
           >
@@ -487,13 +478,13 @@
       </section>
 
       <section
-        class="premierappliances__contact w-full max-w-[2560px] grid grid-cols-pa-mobile grid-rows-pa-mobile md:grid-cols-pa-desktop md:grid-rows-pa-desktop min-h-screen bg-cover bg-center bg-no-repeat text-white border-b-4 border-pa-gold box-border"
+        class="premierappliances__contact w-full min-h-screen grid grid-cols-1 md:grid-cols-12 items-center bg-cover bg-center bg-no-repeat text-white border-b-4 border-pa-gold box-border p-4 md:p-12 gap-4"
         style="
           background-image: url('./assets/img/a433d3e5624f26d8f402051b14df2fc2.png');
         "
       >
         <div
-          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 col-start-1 col-end-13 row-start-1 row-end-13 md:col-start-4 md:col-end-10 md:row-start-3 md:row-end-11"
+          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 w-full md:col-start-4 md:col-span-6"
           id="contact"
         >
           <form
@@ -574,11 +565,11 @@
       </section>
 
       <section
-        class="premierappliances__contactpopup hidden justify-center items-center bg-pa-goldt fixed top-0 left-0 h-screen w-screen z-[99] overflow-y-scroll"
+        class="premierappliances__contactpopup hidden justify-center items-center bg-pa-goldt fixed top-0 left-0 h-screen w-screen z-[100] overflow-y-scroll"
         id="contact-popup"
       >
         <div
-          class="premierappliances__contactpopup--close fixed top-4 right-4 z-[100]"
+          class="premierappliances__contactpopup--close fixed top-4 right-4 z-[101]"
           id="popup-close"
         >
           <div
