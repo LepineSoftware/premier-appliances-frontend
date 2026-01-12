@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const heroHeight = hero.getBoundingClientRect().height;
     if (window.scrollY > heroHeight + 50) {
       nav.classList.add("sticky");
-      if (window.innerWidth >= 768 && stickyLogo) {
+      if (window.innerWidth >= 1280 && stickyLogo) {
         stickyLogo.style.display = "flex";
       }
     } else {
@@ -40,21 +40,37 @@ document.addEventListener("DOMContentLoaded", () => {
   const openIcon = document.querySelector(".nav-icon-open");
   const closeIcon = document.querySelector(".nav-icon-close");
 
+  const toggleNavState = (isActive) => {
+    if (isActive) {
+      navContent.classList.add("active");
+      if (openIcon) openIcon.style.display = "none";
+      if (closeIcon) closeIcon.style.display = "block";
+    } else {
+      navContent.classList.remove("active");
+      if (openIcon) openIcon.style.display = "block";
+      if (closeIcon) closeIcon.style.display = "none";
+    }
+  };
+
   if (mobileNavToggle) {
     mobileNavToggle.addEventListener("click", () => {
-      navContent.classList.toggle("active");
-      const isActive = navContent.classList.contains("active");
-      openIcon.style.display = isActive ? "none" : "block";
-      closeIcon.style.display = isActive ? "block" : "none";
+      const isActive = !navContent.classList.contains("active");
+      toggleNavState(isActive);
     });
   }
 
+  // CLOSE NAV WHEN LINK IS CLICKED
   document.querySelectorAll(".premierappliances__nav--item").forEach((item) => {
     item.addEventListener("click", () => {
-      if (navContent) navContent.classList.remove("active");
-      if (openIcon) openIcon.style.display = "block";
-      if (closeIcon) closeIcon.style.display = "none";
+      toggleNavState(false); // Force close
     });
+  });
+
+  // Safety: Ensure mobile menu closes if window is resized to desktop
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1280 && navContent.classList.contains("active")) {
+      toggleNavState(false);
+    }
   });
 
   // --- Vendors Swiper Logic ---
@@ -73,23 +89,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initialize Swiper (No modules array needed for bundle)
     new Swiper(".vendors-swiper", {
-      slidesPerView: "auto",
-      slidesPerGroup: 1,
-      loop: true,
-      centeredSlides: true,
-      pagination: {
-        el: ".vendorsSwiper__pagination",
-        clickable: true,
-      },
+      // Layout
+      slidesPerView: "auto", // Allows us to define width in CSS
+      spaceBetween: 250, // Space between logos (in px)
+      centeredSlides: true, // Keeps the active item in the center
+      loop: true, // Infinite looping
+
+      // Autoplay configuration
       autoplay: {
-        delay: 2500,
-        disableOnInteraction: true,
+        delay: 2500, // Time in ms before sliding
+        disableOnInteraction: false, // Continue autoplay even after user swipes
       },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      spaceBetween: 25,
+
+      // Disable Navigation and Pagination
+      navigation: false,
+      pagination: false,
     });
   }
 
@@ -103,13 +117,13 @@ document.addEventListener("DOMContentLoaded", () => {
       .querySelectorAll(".premierappliances__packages--btn")
       .forEach((btn) => {
         if (parseInt(btn.dataset.index) === activePackageIndex) {
-          // Active State
-          btn.classList.add("bg-pa-gold");
-          btn.classList.remove("bg-pa-dark");
+          // Active State: Gold bg, White text, Gold border
+          btn.classList.add("bg-pa-gold", "text-white", "border-pa-gold");
+          btn.classList.remove("bg-white", "text-gray-400", "border-gray-300");
         } else {
-          // Inactive State
-          btn.classList.remove("bg-pa-gold");
-          btn.classList.add("bg-pa-dark");
+          // Inactive State: White bg, Grey text, Grey outline
+          btn.classList.remove("bg-pa-gold", "text-white", "border-pa-gold");
+          btn.classList.add("bg-white", "text-gray-400", "border-gray-300");
         }
       });
 
@@ -142,12 +156,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const btnWrapper = document.getElementById(`btn-wrapper-${p.tier}`);
       if (btnWrapper) {
         const btn = document.createElement("button");
-        // Base Tailwind Classes
+        // Base Tailwind Classes (Removed 'text-white' and 'border-none')
         const baseClasses =
-          "premierappliances__packages--btn w-full p-4 rounded text-white font-medium uppercase hover:brightness-95 transition-all border-none cursor-pointer";
+          "premierappliances__packages--btn w-full p-4 rounded font-medium uppercase hover:brightness-95 transition-all border cursor-pointer";
+
         // Initial State
         const stateClasses =
-          index === activePackageIndex ? "bg-pa-gold" : "bg-pa-dark";
+          index === activePackageIndex
+            ? "bg-pa-gold text-white border-pa-gold"
+            : "bg-white text-gray-400 border-gray-300";
 
         btn.className = `${baseClasses} ${stateClasses}`;
         btn.dataset.index = index;

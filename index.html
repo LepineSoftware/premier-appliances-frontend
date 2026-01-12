@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -34,189 +34,236 @@
           extend: {
             colors: {
               "pa-gold": "#cda656",
-              "pa-goldt": "rgba(205, 166, 86, 0.8)",
-              "pa-dark": "#404040",
-              "pa-darkt": "rgba(64, 64, 64, 0.8)",
+              "pa-gold-light": "#e0c078",
+              "pa-dark": "#404040" /* Original Grey */,
+              "pa-black": "#1a1a1a",
             },
             fontFamily: {
               sans: ["Barlow", "sans-serif"],
             },
-            keyframes: {
-              navSticky: {
-                "0%": { position: "fixed", top: "-4rem", left: "0" },
-                "80%": { position: "fixed", top: "0", left: "0" },
-              },
-              contactPopupActive: {
-                "0%": { position: "fixed", top: "200%", left: "0" },
-                "80%": { position: "fixed", top: "0", left: "0" },
-              },
-              swiperFade: {
-                "0%": { opacity: "0" },
-                "80%": { opacity: "1" },
-              },
+            boxShadow: {
+              glass: "0 8px 32px 0 rgba(0, 0, 0, 0.37)",
+              glow: "0 0 20px rgba(205, 166, 86, 0.3)",
+              soft: "0 10px 30px -10px rgba(0, 0, 0, 0.1)",
             },
-            animation: {
-              navSticky: "navSticky 0.5s ease-in-out",
-              contactPopup: "contactPopupActive 0.5s ease-in-out",
-              swiperFade: "swiperFade 0.5s ease-in-out",
+            backgroundImage: {
+              "gradient-gold":
+                "linear-gradient(135deg, #cda656 0%, #b08d45 100%)",
             },
           },
         },
       };
     </script>
 
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260112" />
+    <style>
+      /* Base Styles */
+      body {
+        background-color: #ffffff;
+        color: #404040;
+      }
+
+      /* Premium Text Gradient */
+      .text-gradient-gold {
+        background: linear-gradient(to right, #e0c078, #cda656, #b08d45);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Swiper Pagination Customization */
+      .swiper-pagination-bullet {
+        background: #ccc;
+        opacity: 1;
+      }
+      .swiper-pagination-bullet-active {
+        background: #cda656;
+      }
+    </style>
   </head>
-  <body class="w-full overflow-x-hidden m-0 p-0 font-sans">
+  <body
+    class="w-full overflow-x-hidden m-0 p-0 font-sans selection:bg-pa-gold selection:text-white"
+  >
     <div class="container-fluid w-full" data-brand="premierappliances">
       <div
         id="contact-trigger"
-        class="premierappliances__icon flex justify-center items-center h-12 w-12 rounded-full text-2xl cursor-pointer select-none bg-pa-gold fixed z-[60] bottom-2 right-4 active:translate-y-px transition-all duration-200"
-        data-aos="fade-up"
-        data-aos-delay="1000"
+        class="group fixed z-[60] bottom-6 right-6 flex justify-center items-center h-16 w-16 rounded-full cursor-pointer bg-gradient-gold shadow-lg hover:scale-105 transition-all duration-300 border border-white/20"
       >
         <img
           src="./assets/svg/chatIcon.svg"
-          height="24"
-          width="24"
+          class="w-7 h-7 drop-shadow-md group-hover:rotate-12 transition-transform duration-300"
           alt="Contact"
         />
       </div>
 
       <section
-        class="w-full min-h-screen md:min-h-[calc(100vh-4rem)] bg-cover bg-center bg-no-repeat bg-blend-darken border-b-0 flex flex-col justify-center items-center md:grid md:grid-cols-12 md:content-center pt-24 pb-12 px-4 md:p-12 gap-0 md:gap-8 relative"
+        class="w-full h-screen relative flex flex-col justify-center items-center overflow-hidden border-b-4 border-pa-gold"
         id="hero"
-        style="
-          background-image: url('./assets/img/a433d3e5624f26d8f402051b14df2fc2.png');
-        "
       >
         <div
-          class="premierappliances__hero--logo bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 text-white w-full max-w-lg md:max-w-none md:col-start-7 md:col-span-6 md:self-center order-1 md:order-none"
-          data-aos="fade-in"
-        >
-          <img
-            src="./assets/img/cb2b5bb75816d7f619e6a762e749e596.svg"
-            class="h-auto w-auto max-h-[150px] md:max-h-[200px] object-contain object-center"
-            height="216"
-            width="407"
-            alt="Logo"
-          />
-        </div>
+          class="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed z-0 transform scale-105"
+          style="
+            background-image: url('./assets/img/a433d3e5624f26d8f402051b14df2fc2.png');
+          "
+        ></div>
+
+        <div class="absolute inset-0 bg-pa-black/60 z-0"></div>
+        <div
+          class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)] z-0"
+        ></div>
 
         <div
-          class="premierappliances__hero--copy flex justify-center items-center text-center bg-pa-darkt backdrop-blur-[5px] md:bg-transparent md:backdrop-blur-0 w-full max-w-lg md:max-w-none md:col-span-12 md:self-end p-6 md:p-0 order-2 md:order-none"
-          data-aos="fade-up"
-          data-aos-delay="250"
+          class="relative z-10 flex flex-col items-center gap-10 px-4 max-w-8xl mx-auto text-center"
         >
+          <div data-aos="zoom-out" data-aos-duration="1200">
+            <img
+              src="./assets/img/cb2b5bb75816d7f619e6a762e749e596.svg"
+              class="w-full max-w-xl h-auto object-contain drop-shadow-2xl"
+              alt="Premier Appliances Logo"
+            />
+          </div>
+
           <h1
-            class="text-white uppercase font-normal text-[2rem] md:text-5xl leading-tight drop-shadow-md"
+            class="text-white uppercase font-light text-3xl md:text-5xl leading-tight drop-shadow-lg"
+            data-aos="fade-up"
+            data-aos-delay="300"
           >
-            Welcome to the new era<br />of appliances
+            Welcome to the <span class="text-pa-gold font-bold">new era</span
+            ><br />of appliances
           </h1>
         </div>
       </section>
 
       <nav
-        class="premierappliances__nav bg-pa-dark text-white flex flex-col md:flex-row flex-wrap justify-center items-center h-auto md:h-16 shadow-lg transition-all duration-200 fixed top-0 left-0 w-full z-10 md:relative md:z-auto border-b-4 border-pa-gold box-border"
+        class="bg-pa-dark text-white fixed top-0 left-0 w-full z-50 h-20 transition-all duration-300 shadow-md"
         id="main-nav"
       >
         <div
-          class="premierappliances__nav--logo w-full bg-pa-gold flex justify-between items-center h-16 px-4 md:hidden cursor-pointer"
-          id="mobile-nav-toggle"
-        >
-          <img
-            src="./assets/img/287b976e01c2fdbae7ee7e6e150d29fc.svg"
-            class="h-full w-auto object-center object-contain"
-            height="200"
-            width="200"
-            alt="Premier Appliances"
-          />
-          <img
-            class="nav-icon-open w-6 h-6"
-            src="./assets/svg/menuOpenLight.svg"
-            height="25"
-            width="25"
-            alt="Open"
-          />
-          <img
-            class="nav-icon-close w-6 h-6 hidden"
-            src="./assets/svg/menuCloseLight.svg"
-            height="25"
-            width="25"
-            alt="Close"
-            style="display: none"
-          />
-        </div>
-
-        <div
-          class="premierappliances__nav--content hidden md:flex flex-col md:flex-row flex-wrap justify-center items-center w-full h-full"
-          id="nav-content"
+          class="max-w-[1920px] mx-auto h-full flex justify-between items-center px-6 md:px-12"
         >
           <div
-            class="premierappliances__nav--item premierappliances__navSticky--logo sticky-logo hidden md:flex flex-1 h-full justify-center items-center text-center bg-pa-dark text-white transition-all duration-200 border-b-4 border-transparent px-4 py-2 cursor-pointer"
+            class="flex items-center h-full cursor-pointer hover:opacity-80 transition-opacity"
           >
             <img
               src="./assets/img/cb2b5bb75816d7f619e6a762e749e596.svg"
-              class="h-full w-auto object-contain"
-              height="200"
-              width="200"
+              class="h-10 w-auto object-contain"
               alt="Premier Appliances"
             />
           </div>
+
+          <div class="hidden xl:flex h-full items-center gap-2">
+            <a
+              href="#about"
+              class="px-5 py-2 text-sm font-bold uppercase tracking-widest text-gray-200 hover:text-white hover:text-pa-gold transition-colors"
+              >About</a
+            >
+            <a
+              href="#packages"
+              class="px-5 py-2 text-sm font-bold uppercase tracking-widest text-gray-200 hover:text-white hover:text-pa-gold transition-colors"
+              >Packages</a
+            >
+            <a
+              href="#howitworks"
+              class="px-5 py-2 text-sm font-bold uppercase tracking-widest text-gray-200 hover:text-white hover:text-pa-gold transition-colors"
+              >How It Works</a
+            >
+            <a
+              href="#vendors"
+              class="px-5 py-2 text-sm font-bold uppercase tracking-widest text-gray-200 hover:text-white hover:text-pa-gold transition-colors"
+              >Brands</a
+            >
+            <a
+              href="#whiteglove"
+              class="px-5 py-2 text-sm font-bold uppercase tracking-widest text-gray-200 hover:text-white hover:text-pa-gold transition-colors"
+              >White Glove</a
+            >
+            <a
+              href="#contact"
+              class="ml-4 px-6 py-2 rounded border border-pa-gold text-white text-xs font-bold uppercase tracking-widest hover:bg-pa-gold hover:text-pa-dark transition-all"
+              >Contact Us</a
+            >
+          </div>
+
+          <div
+            class="xl:hidden p-2 text-white cursor-pointer"
+            id="mobile-nav-toggle"
+          >
+            <img
+              class="nav-icon-open w-8 h-8"
+              src="./assets/svg/menuOpenLight.svg"
+              alt="Open"
+            />
+            <img
+              class="nav-icon-close w-8 h-8 hidden"
+              src="./assets/svg/menuCloseLight.svg"
+              alt="Close"
+            />
+          </div>
+        </div>
+
+        <div
+          class="premierappliances__nav--content hidden xl:hidden fixed top-20 left-0 w-full bg-pa-dark flex-col justify-center items-center py-6 shadow-xl z-40 overflow-y-auto"
+          id="nav-content"
+        >
           <a
             href="#about"
-            class="premierappliances__nav--item flex-1 h-full w-full md:w-auto flex justify-center items-center text-center bg-pa-dark text-white transition-all duration-200 border-b-4 border-transparent hover:border-pa-gold hover:bg-white/5 p-4 md:p-0 font-bold uppercase no-underline"
+            class="premierappliances__nav--item w-full text-center py-4 border-b border-white/10 uppercase font-bold tracking-widest text-white text-xl"
             >About</a
           >
           <a
             href="#packages"
-            class="premierappliances__nav--item flex-1 h-full w-full md:w-auto flex justify-center items-center text-center bg-pa-dark text-white transition-all duration-200 border-b-4 border-transparent hover:border-pa-gold hover:bg-white/5 p-4 md:p-0 font-bold uppercase no-underline"
+            class="premierappliances__nav--item w-full text-center py-4 border-b border-white/10 uppercase font-bold tracking-widest text-white text-xl"
             >Packages</a
           >
           <a
             href="#howitworks"
-            class="premierappliances__nav--item flex-1 h-full w-full md:w-auto flex justify-center items-center text-center bg-pa-dark text-white transition-all duration-200 border-b-4 border-transparent hover:border-pa-gold hover:bg-white/5 p-4 md:p-0 font-bold uppercase no-underline"
+            class="premierappliances__nav--item w-full text-center py-4 border-b border-white/10 uppercase font-bold tracking-widest text-white text-xl"
             >How It Works</a
           >
           <a
             href="#vendors"
-            class="premierappliances__nav--item flex-1 h-full w-full md:w-auto flex justify-center items-center text-center bg-pa-dark text-white transition-all duration-200 border-b-4 border-transparent hover:border-pa-gold hover:bg-white/5 p-4 md:p-0 font-bold uppercase no-underline"
+            class="premierappliances__nav--item w-full text-center py-4 border-b border-white/10 uppercase font-bold tracking-widest text-white text-xl"
             >Brands</a
           >
           <a
             href="#whiteglove"
-            class="premierappliances__nav--item flex-1 h-full w-full md:w-auto flex justify-center items-center text-center bg-pa-dark text-white transition-all duration-200 border-b-4 border-transparent hover:border-pa-gold hover:bg-white/5 p-4 md:p-0 font-bold uppercase no-underline"
-            >White Glove Service</a
+            class="premierappliances__nav--item w-full text-center py-4 border-b border-white/10 uppercase font-bold tracking-widest text-white text-xl"
+            >White Glove</a
           >
           <a
             href="#contact"
-            class="premierappliances__nav--item flex-1 h-full w-full md:w-auto flex justify-center items-center text-center bg-pa-dark text-white transition-all duration-200 border-b-4 border-transparent hover:border-pa-gold hover:bg-white/5 p-4 md:p-0 font-bold uppercase no-underline"
+            class="premierappliances__nav--item w-full text-center py-4 text-pa-gold uppercase font-bold tracking-widest text-xl mt-4"
             >Contact</a
           >
         </div>
       </nav>
 
       <section
-        class="premierappliances__about w-full min-h-screen grid grid-cols-1 md:grid-cols-12 items-center bg-cover bg-center bg-no-repeat text-white border-b-4 border-pa-gold box-border p-4 md:p-12 gap-4"
+        class="premierappliances__about w-full py-24 px-4 md:px-12 grid grid-cols-1 md:grid-cols-12 items-center bg-cover bg-center bg-fixed relative border-b-4 border-pa-gold"
         id="about"
         style="
           background-image: url('./assets/img/972679e99a500a1f8d4bddc5a841016a.png');
         "
       >
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
         <div
-          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 w-full md:col-start-8 md:col-span-5"
+          class="relative z-10 bg-pa-dark/80 backdrop-blur-md p-8 md:p-16 rounded-[1rem] w-full md:col-start-6 md:col-span-7 lg:col-start-7 lg:col-span-6 flex flex-col gap-6 shadow-2xl border border-white/10"
+          data-aos="fade-left"
         >
-          <h2
-            class="text-pa-gold uppercase text-2xl md:text-3xl font-normal"
-            data-aos="fade-left"
-          >
-            Tailor your home<br />with customized appliances
-          </h2>
-          <div
-            class="premierappliances__divider bg-pa-gold w-1/4 h-1 mx-auto"
-            data-direction="horizontial"
-          ></div>
-          <p data-aos="fade-left">
+          <div class="flex flex-col gap-2">
+            <h4
+              class="text-pa-gold font-bold uppercase tracking-widest text-sm"
+            >
+              Customized appliance packages
+            </h4>
+            <h2
+              class="text-3xl md:text-5xl text-white font-light uppercase tracking-wide"
+            >
+              Tailor your home
+            </h2>
+            <div class="h-1 w-20 bg-pa-gold mt-2 rounded-full"></div>
+          </div>
+          <p class="text-white leading-relaxed text-lg font-light">
             Premier Appliances brings you the freedom to choose your appliances.
             Whether you love baking, hosting dinner parties, or crafting gourmet
             meals, our flexible appliance packages allow you to create your
@@ -224,93 +271,104 @@
             change your setup as your needs evolve, all with white glove
             service.
           </p>
-          <p class="text-bold font-bold" data-aos="fade-left">
-            Say goodbye to standard options<br />and hello to a personalized
-            living experience.
+          <p class="text-white leading-relaxed text-lg font-bold">
+            Say goodbye to standard options and hello to a personalized living
+            experience!
           </p>
         </div>
       </section>
 
       <section
-        class="premierappliances__packages w-full border-b-4 border-pa-gold box-border"
+        class="w-full bg-white relative py-20 border-b-4 border-pa-gold"
         id="packages"
       >
-        <div
-          class="w-full px-4 md:px-12 pt-8 pb-0 grid grid-cols-1 md:grid-cols-12 gap-4"
-        >
-          <div class="premierappliances__packages--content col-span-full">
+        <div class="w-full px-4 md:px-12 pt-8 pb-0 max-w-[90rem] mx-auto">
+          <div class="text-center mb-12">
             <h2
-              class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
-              data-aos="fade-right"
+              class="text-pa-gold uppercase text-3xl md:text-5xl font-light tracking-widest"
+              data-aos="fade-down"
             >
               Packages
             </h2>
+            <div class="w-24 h-1 bg-pa-gold mx-auto mt-6 rounded-full"></div>
           </div>
 
           <div
-            class="premierappliances__packages--btns col-span-full flex flex-row flex-wrap justify-start items-start gap-2 md:gap-4"
+            class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full items-stretch h-full"
           >
             <div
-              class="premierappliances__packages--btnsWrapper flex flex-col justify-start items-center gap-2 flex-[1_1_350px]"
+              class="flex flex-col gap-4 cursor-pointer group bg-white border border-gray-100 p-8 rounded-2xl shadow-soft transition-shadow duration-300 aos-init h-full"
               id="btn-wrapper-Silver"
             >
-              <h3 class="uppercase text-xl font-normal">Silver</h3>
+              <h3
+                class="uppercase text-xl font-bold text-pa-dark tracking-widest"
+              >
+                Silver
+              </h3>
             </div>
+
             <div
-              class="premierappliances__packages--btnsWrapper flex flex-col justify-start items-center gap-2 flex-[1_1_350px]"
+              class="flex flex-col gap-4 cursor-pointer group bg-white border border-gray-100 p-8 rounded-2xl shadow-soft transition-shadow duration-300 aos-init h-full"
               id="btn-wrapper-Gold"
             >
-              <h3 class="uppercase text-xl font-normal">Gold</h3>
+              <h3
+                class="uppercase text-xl font-bold text-pa-dark tracking-widest"
+              >
+                Gold
+              </h3>
             </div>
+
             <div
-              class="premierappliances__packages--btnsWrapper flex flex-col justify-start items-center gap-2 flex-[1_1_350px]"
+              class="flex flex-col gap-4 cursor-pointer group bg-white border border-gray-100 p-8 rounded-2xl shadow-soft transition-shadow duration-300 aos-init h-full"
               id="btn-wrapper-Platinum"
             >
-              <h3 class="uppercase text-xl font-normal">Platinum</h3>
+              <h3
+                class="uppercase text-xl font-bold text-pa-dark tracking-widest"
+              >
+                Platinum
+              </h3>
             </div>
           </div>
         </div>
 
         <div
           id="packages-swiper-container"
-          class="w-full px-4 md:px-12 pb-8 grid grid-cols-1 md:grid-cols-12"
+          class="w-full px-4 md:px-12 py-12 text-pa-dark"
         ></div>
       </section>
 
       <section
-        class="premierappliances__howitworks w-full min-h-screen grid grid-cols-1 md:grid-cols-12 items-center bg-cover bg-center bg-no-repeat text-white border-b-4 border-pa-gold box-border p-4 md:p-12 gap-4"
+        class="w-full py-24 px-4 md:px-12 grid grid-cols-1 md:grid-cols-12 items-center bg-cover bg-center bg-fixed relative border-b-4 border-pa-gold"
         id="howitworks"
         style="
           background-image: url('./assets/img/6c386fbf1231997f11704559dfdb2e53.jpg');
         "
       >
         <div
-          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 w-full md:col-start-1 md:col-span-6"
+          class="relative z-10 bg-pa-dark/80 backdrop-blur-md p-8 md:p-16 rounded-[1rem] w-full md:col-start-6 md:col-span-7 lg:col-start-7 lg:col-span-6 flex flex-col gap-6 shadow-2xl border border-white/10"
+          data-aos="fade-right"
         >
-          <h2
-            class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
-            data-aos="fade-right"
-          >
-            How it works
-          </h2>
-          <div
-            class="premierappliances__divider bg-pa-gold w-1/4 h-1 mx-auto"
-            data-direction="horizontial"
-          ></div>
-          <p class="text-bold font-bold" data-aos="fade-right">
-            Simple, flexible and worry-free!
-          </p>
-          <p data-aos="fade-right">
-            Exclusive Appliance Program for Lépine Clients
-          </p>
-          <p data-aos="fade-right">
+          <div class="flex flex-col gap-2">
+            <h4
+              class="text-pa-gold font-bold uppercase tracking-widest text-sm"
+            >
+              Exclusive Appliance Program for Lépine Clients
+            </h4>
+            <h2
+              class="text-3xl md:text-5xl text-white font-light uppercase tracking-wide"
+            >
+              How it works
+            </h2>
+            <div class="h-1 w-20 bg-pa-gold mt-2 rounded-full"></div>
+          </div>
+          <p class="text-white leading-relaxed text-lg font-light">
             Enjoy a seamless, stress-free experience with our tailored appliance
             solutions. Choose from pre-designed packages or customize your
             selection to suit your lifestyle. Whether you're looking to purchase
             or lease appliances, select a term that aligns with your lease, and
             we'll ensure installation is complete before your move-in date.
           </p>
-          <p data-aos="fade-right">
+          <p class="text-gray-300 leading-relaxed text-lg font-bold">
             We take care of maintenance, repairs, and replacements, so you can
             focus on what matters – living your best life. Discover effortless
             living today!
@@ -319,351 +377,460 @@
       </section>
 
       <section
-        class="premierappliances__vendors w-full border-b-4 border-pa-gold box-border"
+        class="w-full bg-white py-20 border-b-4 border-pa-gold"
         id="vendors"
       >
-        <div
-          class="w-full px-4 md:px-12 pt-8 grid grid-cols-1 md:grid-cols-12 gap-4"
-        >
-          <div class="premierappliances__vendors--content col-span-full">
-            <h2
-              class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
-              data-aos="fade-left"
-            >
-              Brands We Carry
-            </h2>
-          </div>
+        <div class="max-w-8xl mx-auto px-4 text-center mb-12">
+          <h2
+            class="text-3xl md:text-5xl text-pa-gold uppercase font-light tracking-wide"
+          >
+            Brands We Carry
+          </h2>
         </div>
-
-        <div class="premierappliances__swiper w-full py-8">
-          <div class="swiper vendors-swiper">
-            <div class="swiper-wrapper" id="vendors-wrapper"></div>
-            <div
-              class="vendorsSwiper__pagination swiper-pagination flex justify-center items-center pt-8"
-            ></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+        <div class="premierappliances__swiper w-full">
+          <div class="swiper vendors-swiper w-full mx-auto">
+            <div class="swiper-wrapper items-center" id="vendors-wrapper"></div>
           </div>
         </div>
       </section>
 
       <section
-        class="premierappliances__flexibility w-full min-h-screen grid grid-cols-1 md:grid-cols-12 items-center bg-cover bg-center bg-no-repeat text-white border-b-4 border-pa-gold box-border p-4 md:p-12 gap-4"
+        class="w-full py-32 px-4 bg-cover bg-center relative flex justify-center items-center border-b-4 border-pa-gold"
         id="flexibility"
         style="
           background-image: url('./assets/img/672920280fea1e8725e3fcaa17a23baa.png');
         "
       >
+        <div class="absolute inset-0 bg-pa-dark/70 backdrop-blur-sm"></div>
+
         <div
-          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 w-full md:col-start-4 md:col-span-6"
+          class="relative z-10 bg-pa-dark/90 p-8 md:p-14 rounded-[1rem] w-full max-w-4xl md:col-start-1 md:col-span-6 flex flex-col justify-center items-center text-center gap-6 shadow-2xl border border-white/5 aos-init aos-animate"
         >
           <h2
-            class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
-            data-aos="fade-up"
+            class="text-white text-3xl md:text-5xl uppercase font-light leading-tight"
           >
-            Flexibility<br />for every lifestyle
+            <span class="text-pa-gold">Flexibility</span><br />For Every
+            Lifestyle
           </h2>
-          <div
-            class="premierappliances__divider bg-pa-gold w-1/4 h-1 mx-auto"
-            data-direction="horizontial"
-          ></div>
-          <p data-aos="fade-down">
+          <div class="h-1 w-20 bg-pa-gold mt-2 rounded-full"></div>
+          <p class="space-y-6 text-gray-300 font-light text-lg">
             If your preferences change, so can your appliances. Whether you want
-            the latest features or a new style, we've got you covered. Upgrade
-            anytime and enjoy the freedom of choice without hassle.
+            the latest features or a new style, we've got you covered.
+          </p>
+          <p class="space-y-6 text-gray-300 font-bold text-lg">
+            Upgrade anytime and enjoy the freedom of choice without hassle.
           </p>
         </div>
       </section>
 
       <section
-        class="premierappliances__whiteglove w-full text-center border-b-4 border-pa-gold py-12 px-4 md:px-12 box-border flex flex-col items-center justify-center"
+        class="w-full bg-white py-24 px-4 md:px-12 relative overflow-hidden border-b-4 border-pa-gold"
         id="whiteglove"
       >
-        <div
-          class="premierappliances__contentBlock flex flex-col items-center justify-center gap-8 md:gap-12 bg-transparent p-0 w-full max-w-4xl"
-        >
-          <div
-            class="premierappliances__contentWrapper flex flex-col justify-center items-center gap-2"
-            data-block="header"
-          >
+        <div class="max-w-7xl mx-auto relative z-10">
+          <div class="text-center mb-16" data-aos="fade-up">
             <h2
-              class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
-              data-aos="fade"
+              class="text-3xl md:text-5xl text-pa-gold uppercase font-light tracking-widest mb-6"
             >
               White Glove Service
             </h2>
-            <div
-              class="premierappliances__divider bg-pa-gold w-1/4 h-1 mx-auto"
-              data-direction="horizontial"
-            ></div>
-            <p class="text-bold font-bold" data-aos="fade">
+            <p class="text-xl text-gray-500 font-light max-w-4xl mx-auto">
               We will install and have your appliances ready for you on the day
               you move in, this includes having ice makers or water hooked up to
               fridges if you selected appliances with these features.
             </p>
           </div>
 
-          <div
-            class="premierappliances__contentWrapper flex flex-col justify-center items-center gap-2"
-            data-aos="fade"
-          >
-            <h3 class="text-gold text-pa-gold uppercase text-xl font-normal">
-              All packages come with
-            </h3>
-            <ul
-              class="flex flex-col justify-start items-start gap-4 text-left pl-4 list-inside"
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="bg-white border border-gray-100 p-8 rounded-2xl shadow-soft transition-shadow duration-300"
+              data-aos="fade-up"
+              data-aos-delay="100"
             >
-              <li>
-                Full warranty for the duration of the rental. This includes 1
-                annual scheduled maintenance for component cleaning and
-                inspection
-              </li>
-              <li>
-                Filters will be changed; however, the cost of the filter is the
-                client's responsibility, but the service is of no charge
-              </li>
-              <li>
+              <div
+                class="w-12 h-12 bg-pa-gold/10 rounded-full flex justify-center items-center mb-6 text-pa-gold"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"
+                  />
+                </svg>
+              </div>
+              <h3
+                class="text-pa-dark text-xl uppercase font-bold tracking-widest mb-3"
+              >
+                Full Warranty
+              </h3>
+              <p class="text-gray-500 text-sm leading-relaxed">
+                For the duration of the rental. This includes 1 annual scheduled
+                maintenance for component cleaning and inspection
+              </p>
+            </div>
+
+            <div
+              class="bg-white border border-gray-100 p-8 rounded-2xl shadow-soft transition-shadow duration-300"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div
+                class="w-12 h-12 bg-pa-gold/10 rounded-full flex justify-center items-center mb-6 text-pa-gold"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+                  />
+                </svg>
+              </div>
+              <h3
+                class="text-pa-dark text-xl uppercase font-bold tracking-widest mb-3"
+              >
+                Filter Service
+              </h3>
+              <p class="text-gray-500 text-sm leading-relaxed">
+                Filter service is available. The cost of the filter is the
+                client's responsibility, but the service is no charge.
+              </p>
+            </div>
+
+            <div
+              class="bg-white border border-gray-100 p-8 rounded-2xl shadow-soft transition-shadow duration-300"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div
+                class="w-12 h-12 bg-pa-gold/10 rounded-full flex justify-center items-center mb-6 text-pa-gold"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z"
+                  />
+                </svg>
+              </div>
+              <h3
+                class="text-pa-dark text-xl uppercase font-bold tracking-widest mb-3"
+              >
+                Rapid Repairs
+              </h3>
+              <p class="text-gray-500 text-sm leading-relaxed">
                 If an appliance fails during the rental period, we will visit
                 and perform a service call. If it is not something that can be
                 repaired on site, an equivalent model and age appliance will be
                 supplied as a replacement. If repair can be performed on site,
                 it will be completed in a timely manner as parts are available
-              </li>
-              <li>
-                Our technicians will wear booties while in your home and leave
-                your residence in a condition as if they were never there after
-                the repairs are completed
-              </li>
-              <li>
-                Please note, if a service call is scheduled for a repair but the
-                unit is found to be in working order or the call was for a
-                customer caused problem, a $50 service charge will be billed
-              </li>
-            </ul>
-          </div>
+              </p>
+            </div>
 
-          <div
-            class="premierappliances__contentWrapper flex flex-col justify-center items-center gap-2"
-            data-aos="fade"
-          >
-            <h3 class="text-gold text-pa-gold uppercase text-xl font-normal">
-              After Hours Call Out
-            </h3>
-            <p>
-              If a break down occurs, we will schedule a priority service visit
-              in a timely manner and get your appliance back online.
-            </p>
-          </div>
+            <div
+              class="bg-white border border-gray-100 p-8 rounded-2xl shadow-soft transition-shadow duration-300"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div
+                class="w-12 h-12 bg-pa-gold/10 rounded-full flex justify-center items-center mb-6 text-pa-gold"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                  />
+                </svg>
+              </div>
+              <h3
+                class="text-pa-dark text-xl uppercase font-bold tracking-widest mb-3"
+              >
+                Care & Respect
+              </h3>
+              <p class="text-sm leading-relaxed">
+                Our technicians wear booties and leave your residence in a
+                condition as if they were never there. Your home is treated with
+                the utmost respect.
+              </p>
+            </div>
 
-          <div
-            class="premierappliances__contentWrapper flex flex-col justify-center items-center gap-2"
-            data-aos="fade"
-            data-block="servicehours"
-          >
-            <h3 class="text-gold text-pa-gold uppercase text-xl font-normal">
-              Service Hours
-            </h3>
-            <p class="text-bold font-bold">Monday – Friday</p>
-            <p class="text-bold font-bold">8am – 4pm</p>
-            <p data-aos="fade">
-              We will make all efforts possible to get you back up and running
-              as quickly as we can, please note during holidays, service calls
-              may be delayed. Our team will reach out and discuss the issue and
-              inform you of when you can expect them to arrive. They may help
-              you through some troubleshooting options by phone to help
-              determine the cause of the problem or to assist in the repair.
-            </p>
+            <div
+              class="bg-pa-gold border border-gray-100 p-0 rounded-2xl shadow-soft transition-shadow duration-300 md:col-span-2 lg:col-span-2 overflow-hidden flex flex-col md:flex-row"
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
+              <div
+                class="p-8 flex flex-col justify-center items-start md:w-1/3"
+              >
+                <h3
+                  class="text-white text-xl uppercase font-bold tracking-widest mb-2 mt-2"
+                >
+                  Service Hours
+                </h3>
+                <div class="text-white text-3xl font-bold">Mon — Fri</div>
+                <div class="text-white text-xl">8am — 4pm</div>
+              </div>
+              <div class="bg-white p-8 md:w-2/3 flex flex-col justify-center">
+                <h4
+                  class="text-pa-dark text-xl uppercase font-bold tracking-widest mb-3"
+                >
+                  After Hours Support
+                </h4>
+                <p class="text-gray-500 text-sm">
+                  If a breakdown occurs, we schedule a priority service visit to
+                  get your appliance back online.
+                </p>
+                <p
+                  class="text-xs text-gray-500/70 italic border-t border-white/20 pt-2"
+                >
+                  We will make all efforts possible to get you back up and
+                  running as quickly as we can, please note during holidays,
+                  service calls may be delayed. Our team will reach out and
+                  discuss the issue and inform you of when you can expect them
+                  to arrive. They may help you through some troubleshooting
+                  options by phone to help determine the cause of the problem or
+                  to assist in the repair.
+                </p>
+
+                <p
+                  class="text-xs text-gray-500/70 italic border-t border-white/20 pt-2"
+                >
+                  Please note, if a service call is scheduled for a repair but
+                  the unit is found to be in working order or the call was for a
+                  customer caused problem, a $50 service charge will be billed.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <section
-        class="premierappliances__contact w-full min-h-screen grid grid-cols-1 md:grid-cols-12 items-center bg-cover bg-center bg-no-repeat text-white border-b-4 border-pa-gold box-border p-4 md:p-12 gap-4"
+        class="w-full min-h-screen grid grid-cols-1 md:grid-cols-12 items-center bg-cover bg-center bg-fixed relative p-4 md:p-12 border-b-4 border-pa-gold"
         style="
           background-image: url('./assets/img/a433d3e5624f26d8f402051b14df2fc2.png');
         "
+        id="contact"
       >
+        <div class="absolute inset-0 bg-pa-dark/70 backdrop-blur-sm"></div>
+
         <div
-          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 box-border backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 w-full md:col-start-4 md:col-span-6"
-          id="contact"
+          class="relative z-10 bg-pa-dark/80 backdrop-blur-md p-10 md:p-16 rounded-[1rem] w-full max-w-4xl mx-auto md:col-start-1 md:col-span-12 lg:col-start-4 lg:col-span-6 flex flex-col gap-8 shadow-2xl aos-init"
         >
-          <form
-            class="premierappliances__contact--form flex flex-col gap-2 w-full"
-            id="contact-form-main"
-          >
+          <div class="text-center">
             <h2
-              class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
-              data-aos="fade-down"
+              class="text-pa-gold uppercase text-3xl md:text-5xl font-light tracking-widest mb-4"
             >
-              Contact
+              Contact Us
             </h2>
             <div
-              class="premierappliances__divider bg-pa-gold w-1/4 h-1 mx-auto"
-              data-direction="horizontial"
-            ></div>
-
-            <div class="premierappliances__contact--info flex flex-col gap-1">
+              class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm md:text-5ase font-medium text-white"
+            >
               <a
-                href="mailto:dave@premierappliances.ca"
-                data-aos="fade-up"
-                data-aos-delay="100"
-                class="text-inherit no-underline"
+                href="mailto:info@premierappliances.ca"
+                class="hover:text-pa-gold transition-colors"
+                >info@premierappliances.ca</a
               >
-                <h4 class="text-lg font-normal">info@premierappliances.ca</h4>
-              </a>
+              <span class="text-pa-gold hidden sm:inline">|</span>
               <a
                 href="tel:6132268955"
-                data-aos="fade-up"
-                data-aos-delay="150"
-                class="text-inherit no-underline"
+                class="hover:text-pa-gold transition-colors"
+                >613-226-8955</a
               >
-                <h4 class="text-lg font-normal">613-226-8955</h4>
-              </a>
+            </div>
+          </div>
+
+          <form class="flex flex-col gap-4 w-full" id="contact-form-main">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input
+                required=""
+                name="name"
+                type="text"
+                placeholder="Name (Required)"
+                class="bg-black/30 border border-white/10 rounded-lg p-4 text-white placeholder-gray-400 focus:outline-none focus:border-pa-gold focus:ring-1 focus:ring-pa-gold transition-all"
+              />
+              <input
+                required=""
+                name="email"
+                type="email"
+                placeholder="Email (Required)"
+                class="bg-black/30 border border-white/10 rounded-lg p-4 text-white placeholder-gray-400 focus:outline-none focus:border-pa-gold focus:ring-1 focus:ring-pa-gold transition-all"
+              />
             </div>
 
-            <p class="text-left mb-0">Name (required)</p>
-            <input
-              required
-              name="name"
-              type="text"
-              class="premierappliances__contact--input p-2 h-12 text-pa-dark w-full box-border"
-            />
-            <p class="text-left mb-0">Email (required)</p>
-            <input
-              required
-              name="email"
-              type="email"
-              class="premierappliances__contact--input p-2 h-12 text-pa-dark w-full box-border"
-            />
-            <p class="text-left mb-0">Phone Number</p>
-            <input
-              name="phoneNumber"
-              type="text"
-              class="premierappliances__contact--input p-2 h-12 text-pa-dark w-full box-border"
-            />
-            <p class="text-left mb-0">Rental Start Date</p>
-            <input
-              name="rentalStartDate"
-              type="date"
-              class="premierappliances__contact--input p-2 h-12 text-pa-dark w-full box-border"
-            />
-            <p class="text-left mb-0">Message</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input
+                name="phoneNumber"
+                type="text"
+                placeholder="Phone Number"
+                class="bg-black/30 border border-white/10 rounded-lg p-4 text-white placeholder-gray-400 focus:outline-none focus:border-pa-gold focus:ring-1 focus:ring-pa-gold transition-all"
+              />
+              <input
+                name="rentalStartDate"
+                type="text"
+                placeholder="Rental Start Date"
+                onfocus="(this.type='date')"
+                onblur="(this.type='text')"
+                class="bg-black/30 border border-white/10 rounded-lg p-4 text-white placeholder-gray-400 focus:outline-none focus:border-pa-gold focus:ring-1 focus:ring-pa-gold transition-all [color-scheme:dark]"
+              />
+            </div>
+
             <textarea
               name="message"
-              class="premierappliances__contact--input p-2 text-pa-dark w-full box-border resize-none h-24"
+              placeholder="How can we help you?"
+              class="bg-black/30 border border-white/10 rounded-lg p-4 text-white placeholder-gray-400 focus:outline-none focus:border-pa-gold focus:ring-1 focus:ring-pa-gold transition-all h-32 resize-none"
             ></textarea>
 
-            <p class="form-response"></p>
+            <p
+              class="form-response text-green-400 font-medium text-center min-h-[1rem]"
+            ></p>
+
             <button
               type="submit"
-              class="premierappliances__contact--submit bg-pa-gold p-4 font-medium uppercase border-none text-white hover:brightness-95 hover:cursor-pointer transition-all duration-200"
+              class="ml-4 px-6 py-2 rounded border border-pa-gold text-white text-xs font-bold uppercase tracking-widest hover:bg-pa-gold hover:text-pa-dark transition-all duration-300 w-full md:w-auto md:self-center min-w-[200px]"
             >
-              Submit
+              Submit Inquiry
             </button>
           </form>
         </div>
       </section>
 
       <section
-        class="premierappliances__contactpopup hidden justify-center items-center bg-pa-goldt fixed top-0 left-0 h-screen w-screen z-[100] overflow-y-scroll"
+        class="premierappliances__contactpopup hidden md:justify-center md:items-center bg-black/60 backdrop-blur-sm fixed inset-0 z-[100] overflow-y-auto overflow-x-hidden"
         id="contact-popup"
       >
         <div
-          class="premierappliances__contactpopup--close fixed top-4 right-4 z-[101]"
-          id="popup-close"
+          class="flex min-h-full items-start md:items-center justify-center md:justify-center p-0 md:p-4"
         >
           <div
-            class="premierappliances__icon premierappliances__close flex justify-center items-center h-12 w-12 rounded-full text-2xl leading-none cursor-pointer bg-pa-dark text-white active:translate-y-px transition-all duration-200"
+            class="relative w-full max-w-none md:max-w-lg bg-pa-dark/95 backdrop-blur-md p-4 md:p-14 rounded-none md:rounded-[1rem] shadow-2xl my-0 md:my-8 min-h-screen md:min-h-0 flex flex-col justify-center md:block"
           >
-            <img
-              src="./assets/svg/menuCloseLight.svg"
-              height="24"
-              width="24"
-              alt="Close"
-            />
-          </div>
-        </div>
-
-        <div
-          class="premierappliances__contentBlock bg-pa-darkt/80 p-8 md:p-12 backdrop-blur-[5px] flex flex-col justify-center items-center text-center gap-4 w-screen max-w-[665px] text-white"
-        >
-          <form
-            class="premierappliances__contact--form flex flex-col gap-2 w-full"
-            id="contact-form-popup"
-          >
-            <h2
-              class="text-gold text-pa-gold uppercase text-2xl md:text-3xl font-normal"
-            >
-              Contact
-            </h2>
             <div
-              class="premierappliances__divider bg-pa-gold w-1/4 h-1 mx-auto"
-              data-direction="horizontial"
-            ></div>
-
-            <p class="text-left mb-0">Name (required)</p>
-            <input
-              required
-              name="name"
-              type="text"
-              class="premierappliances__contact--input p-2 h-12 text-pa-dark w-full box-border"
-            />
-            <p class="text-left mb-0">Email (required)</p>
-            <input
-              required
-              name="email"
-              type="email"
-              class="premierappliances__contact--input p-2 h-12 text-pa-dark w-full box-border"
-            />
-            <p class="text-left mb-0">Phone Number</p>
-            <input
-              name="phoneNumber"
-              type="text"
-              class="premierappliances__contact--input p-2 h-12 text-pa-dark w-full box-border"
-            />
-            <p class="text-left mb-0">Rental Start Date</p>
-            <input
-              name="rentalStartDate"
-              type="date"
-              class="premierappliances__contact--input p-2 h-12 text-pa-dark w-full box-border"
-            />
-            <p class="text-left mb-0">Message</p>
-            <textarea
-              name="message"
-              class="premierappliances__contact--input p-2 text-pa-dark w-full box-border resize-none h-24"
-            ></textarea>
-
-            <p class="form-response"></p>
-            <button
-              type="submit"
-              class="premierappliances__contact--submit bg-pa-gold p-4 font-medium uppercase border-none text-white hover:brightness-95 hover:cursor-pointer transition-all duration-200"
+              id="popup-close"
+              class="absolute top-4 right-4 group flex justify-center items-center h-10 w-10 rounded-full cursor-pointer border border-white/10 text-white hover:bg-pa-gold hover:text-pa-dark hover:border-pa-gold transition-all duration-300 z-50"
             >
-              Submit
-            </button>
-          </form>
+              <img
+                src="./assets/svg/menuCloseLight.svg"
+                class="w-5 h-5 transition-transform group-hover:rotate-90"
+                alt="Close"
+              />
+            </div>
+
+            <form
+              class="flex flex-col gap-4 w-full mt-2"
+              id="contact-form-popup"
+            >
+              <h2
+                class="text-pa-gold uppercase text-4xl font-light tracking-widest mb-4 text-center"
+              >
+                Contact Us
+              </h2>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input
+                  required=""
+                  name="name"
+                  type="text"
+                  placeholder="Name (Required)"
+                  class="bg-black/30 border border-white/10 rounded-lg p-4 text-white placeholder-gray-400 focus:outline-none focus:border-pa-gold focus:ring-1 focus:ring-pa-gold transition-all"
+                />
+                <input
+                  required=""
+                  name="email"
+                  type="email"
+                  placeholder="Email (Required)"
+                  class="bg-black/30 border border-white/10 rounded-lg p-4 text-white placeholder-gray-400 focus:outline-none focus:border-pa-gold focus:ring-1 focus:ring-pa-gold transition-all"
+                />
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input
+                  name="phoneNumber"
+                  type="text"
+                  placeholder="Phone Number"
+                  class="bg-black/30 border border-white/10 rounded-lg p-4 text-white placeholder-gray-400 focus:outline-none focus:border-pa-gold focus:ring-1 focus:ring-pa-gold transition-all"
+                />
+                <input
+                  name="rentalStartDate"
+                  type="text"
+                  placeholder="Rental Start Date"
+                  onfocus="(this.type='date')"
+                  onblur="(this.type='text')"
+                  class="bg-black/30 border border-white/10 rounded-lg p-4 text-white placeholder-gray-400 focus:outline-none focus:border-pa-gold focus:ring-1 focus:ring-pa-gold transition-all [color-scheme:dark]"
+                />
+              </div>
+
+              <textarea
+                name="message"
+                placeholder="How can we help you?"
+                class="bg-black/30 border border-white/10 rounded-lg p-4 text-white placeholder-gray-400 focus:outline-none focus:border-pa-gold focus:ring-1 focus:ring-pa-gold transition-all h-32 resize-none"
+              ></textarea>
+
+              <p
+                class="form-response text-center min-h-[1rem] text-green-400 font-medium"
+              ></p>
+
+              <button
+                type="submit"
+                class="px-6 py-3 rounded border border-pa-gold text-white text-xs font-bold uppercase tracking-widest hover:bg-pa-gold hover:text-pa-dark transition-all duration-300 w-full"
+              >
+                Submit Inquiry
+              </button>
+            </form>
+          </div>
         </div>
       </section>
 
-      <footer
-        class="premierappliances__footer bg-pa-dark text-white h-20 p-4 flex justify-center items-center"
-        id="footer"
-      >
-        <div
-          class="premierappliances__footer--content flex justify-center items-center"
-        >
-          <a href="#">
-            <img
-              src="./assets/img/cb2b5bb75816d7f619e6a762e749e596.svg"
-              height="50"
-              width="50"
-              class="h-[50px] w-auto object-contain"
-              alt="Logo"
-            />
-          </a>
+      <footer class="bg-pa-dark text-white py-8">
+        <div class="flex flex-col items-center gap-4">
+          <img
+            src="./assets/img/cb2b5bb75816d7f619e6a762e749e596.svg"
+            class="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+            alt="Logo"
+          />
+          <p class="text-xs uppercase tracking-widest opacity-60">
+            &copy; 2026 Premier Appliances. All Rights Reserved.
+          </p>
         </div>
       </footer>
     </div>
 
-    <script type="module" src="./assets/js/script.js"></script>
+    <script type="module" src="./assets/js/script.js?v=20260112"></script>
+    <script>
+      AOS.init({
+        once: true,
+        duration: 800,
+        easing: "ease-out-quad",
+        offset: 100,
+      });
+    </script>
   </body>
 </html>
